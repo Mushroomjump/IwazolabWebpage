@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iwazo Lab Chatbot</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div id="sidebar">
+        <h1>Iwazo Lab</h1>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">Users</a></li>
+            <li><a href="#">Analytics</a></li>
+        </ul>
+    </div>
+    <header>
+        <button onclick="location.href='#'">Sign In</button>
+        <button onclick="location.href='#'">Sign Up</button>
+    </header>
+    <div id="chat-container">
+        <textarea id="message-input" placeholder="Type your message here..."></textarea>
+        <button onclick="sendMessage()">Send</button>
+        <div id="chat-output"></div>
+    </div>
+        <!-- Chatbot script -->
+    <script type="text/javascript">
+  (function(d, t) {
+      var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+      v.onload = function() {
+        window.voiceflow.chat.load({
+          verify: { projectID: '6620ccdab510a5beecdf2d13' },
+          url: 'https://general-runtime.voiceflow.com',
+          versionID: 'production',
+            render: {
+		mode: 'embedded',
+		target: document.getElementById('chat-container'),
+	},
+	autostart: false
+        });
+      }
+      v.src = "https://cdn.voiceflow.com/widget/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);
+  })(document, 'script');
+</script>
+</body>
+</html>
+
