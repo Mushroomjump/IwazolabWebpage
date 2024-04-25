@@ -12,6 +12,8 @@
     flex-direction: column;
     align-items: center;
     font-family: Arial, sans-serif;
+	background-color: #FFF8DC; /* Light cream for the body */
+        color: #4A148C; /* Deep purple for text */
 }
 
 #sidebar {
@@ -21,6 +23,8 @@
     height: 100%;
     background: #f4f4f4;
     padding: 20px;
+	background-color: #FFA500; /* Bright orange for sidebar background */
+        color: #1A237E; /* Dark blue for sidebar text */
 }
 
 header {
@@ -30,6 +34,7 @@ header {
     box-sizing: border-box;
     display: flex;
     justify-content: flex-end;
+	background-color: #2E7FF1;
 }
 
 #chat-container {
@@ -50,6 +55,57 @@ textarea {
     min-height: 200px;
     padding: 10px;
 }
+button {
+        background-color: #FF00FF; /* Magenta for buttons */
+        /* ... other styles ... */
+    }
+
+    button:hover, button:focus {
+        background-color: #FFFF00; /* Soft yellow for button highlights */
+        /* ... other styles ... */
+    }
+
+    a, .icon {
+        color: #FF1744; /* Vibrant red for links and icons */
+        /* ... other styles ... */
+    }
+
+    footer {
+        background-color: #1A76D2; /* Subdued tone of primary blue for footer */
+        /* ... other styles ... */
+    }
+@media (max-width: 768px) {
+        #sidebar {
+            width: 100px; /* Smaller sidebar on small screens */
+            padding: 10px;
+        }
+
+        header {
+            padding: 5px 10px; /* Smaller padding on small screens */
+        }
+
+        #chat-container {
+            margin-left: 120px;
+            width: calc(100% - 130px); /* Adjust chat container width on small screens */
+        }
+    }
+
+    @media (max-width: 480px) {
+        #sidebar {
+            position: relative; /* Sidebar below the header on very small screens */
+            width: 100%;
+            height: auto;
+        }
+
+        header {
+            display: block; /* Stack buttons vertically on very small screens */
+        }
+
+        #chat-container {
+            margin-left: 0;
+            width: 100%; /* Full width on very small screens */
+        }
+    }
 	</style>
 </head>
 <body>
