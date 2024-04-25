@@ -1,0 +1,44 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Arial, sans-serif;
+}
+
+#sidebar {
+    position: fixed;
+    left: 0;
+    width: 200px;
+    height: 100%;
+    background: #f4f4f4;
+    padding: 20px;
+}
+
+header {
+    width: 100%;
+    background: #ddd;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: flex-end;
+}
+
+#chat-container {
+    margin-left: 220px;
+    padding: 20px;
+    width: calc(100% - 240px);
+    box-sizing: border-box;
+}
+
+textarea {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+#chat-output {
+    width: 100%;
+    background: #eaeaea;
+    min-height: 200px;
+    padding: 10px;
+}
+
