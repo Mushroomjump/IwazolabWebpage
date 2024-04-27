@@ -1,1 +1,2 @@
-# ChatbotFintechKenya
+# Iwazolab Webpage
+# CSS and Scripts in HTML file
