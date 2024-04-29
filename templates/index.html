@@ -39,6 +39,55 @@ header {
     width: calc(100% - 240px);
     box-sizing: border-box;
 }
+/* Style the main menu */
+.menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu > li {
+    position: relative;
+    display: inline-block;
+}
+
+.menu a {
+    display: block;
+    padding: 8px;
+    background-color: #f9f9f9;
+    text-decoration: none;
+    color: black;
+}
+
+/* Hide the submenu */
+.submenu {
+    display: none;
+    position: absolute;
+    list-style-type: none;
+    margin-top: 5px;
+    padding: 0;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.submenu > li {
+    display: block;
+}
+
+/* Show the submenu on hover */
+.menu > li:hover .submenu {
+    display: block;
+}
+
+.submenu a {
+    padding: 10px;
+    background-color: #ffffff;
+    color: black;
+}
+
+.submenu a:hover {
+    background-color: #f1f1f1;
+}
+
 
 textarea {
     width: 100%;
