@@ -63,14 +63,18 @@ header {
 .submenu {
     display: none;
     position: absolute;
+    left: 0; /* Align to the left edge of the parent li */
+    top: 100%; /* Align to the bottom edge of the parent li */
     list-style-type: none;
     margin-top: 5px;
     padding: 0;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    z-index: 100; /* Ensure it's above other elements */
 }
 
 .submenu > li {
     display: block;
+    background-color: #ffffff;
 }
 
 /* Show the submenu on hover */
@@ -80,15 +84,14 @@ header {
 
 .submenu a {
     padding: 10px;
-    background-color: #ffffff;
     color: black;
+    text-decoration: none; /* Removes underline */
+    display: block; /* Ensures full width highlighting */
 }
 
 .submenu a:hover {
     background-color: #f1f1f1;
 }
-
-
 textarea {
     width: 100%;
     margin-bottom: 10px;
@@ -137,25 +140,24 @@ textarea {
 </head>
 <body>
     <div id="sidebar">
-        <h1>Welcome to Finlingo your AI-powered Financial literacy partner</h1>
-        <ul>
-		<ul class="menu">
-    <li>
-        <a href="#">Home</a>
-        <ul class="submenu">
-            <li><a href="#">Gamification</a></li>
-            <li><a href="#">Budgeting</a></li>
-            <li><a href="#">Investment</a></li>
-            <li><a href="#">Fintechs</a></li>
-            <li><a href="#">Insurtech</a></li>
-            <li><a href="#">Regtech</a></li>
-        </ul>
-	<li><a href="#">Dashboard</a></li>
-            <li><a href="#">Tax Trivia</a></li>
-            <li><a href="#">Analytics</a></li>
-    </li>
-</ul>
-    </div>
+    <h1>Welcome to Finlingo your AI-powered Financial literacy partner</h1>
+    <ul class="menu">
+        <li>
+            <a href="#">Home</a>
+            <ul class="submenu">
+                <li><a href="#">Gamification</a></li>
+                <li><a href="#">Budgeting</a></li>
+                <li><a href="#">Investment</a></li>
+                <li><a href="#">Fintechs</a></li>
+                <li><a href="#">Insurtech</a></li>
+                <li><a href="#">Regtech</a></li>
+            </ul>
+        </li>
+        <li><a href="#">Dashboard</a></li>
+        <li><a href="#">Tax Trivia</a></li>
+        <li><a href="#">Analytics</a></li>
+    </ul>
+</div>
     <header>
         <button onclick="location.href='#'">Sign In</button>
         <button onclick="location.href='#'">Sign Up</button>
