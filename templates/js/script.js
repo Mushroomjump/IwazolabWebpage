@@ -28,36 +28,41 @@ const questions = [
 
 let currentQuestionIndex = 0;
 
+
 function displayQuestion() {
-    const quizContainer = document.getElementById('question');
-    quizContainer.textContent = questions[currentQuestionIndex].question;
+    const questionContainer = document.getElementById('question');
+    questionContainer.textContent = questions[currentQuestionIndex].question;
 
     const choicesContainer = document.getElementById('choices');
     choicesContainer.innerHTML = ''; // Clear previous choices
+
     questions[currentQuestionIndex].choices.forEach((choice, index) => {
-        const li = document.createElement('li');
-        li.textContent = choice;
-        li.onclick = () => selectAnswer(index);
-        choicesContainer.appendChild(li);
+        const button = document.createElement('button');
+        button.textContent = choice;
+        button.className = 'choice-button'; // Ensure this class is styled in CSS
+        button.onclick = () => selectAnswer(index);
+        choicesContainer.appendChild(button);
     });
 }
 
 function selectAnswer(index) {
-    if (index === questions[currentQuestionIndex].correct) {
+    const correctIndex = questions[currentQuestionIndex].correct;
+    if (index === correctIndex) {
         alert('Correct!');
     } else {
         alert('Wrong!');
     }
+}
+
+function nextQuestion() {
     currentQuestionIndex++;
     if (currentQuestionIndex < questions.length) {
         displayQuestion();
     } else {
         alert('Quiz completed!');
+        currentQuestionIndex = 0; // Reset quiz or handle as needed
+        displayQuestion(); // Restart or show results
     }
 }
 
-function nextQuestion() {
-    displayQuestion();
-}
-
-window.onload = displayQuestion;
+window.onload = displayQuestion; // Initialize the quiz on page load
