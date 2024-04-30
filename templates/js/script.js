@@ -1,27 +1,27 @@
 const questions = [
     {
         question: "What is the purpose of creating a budget?",
-        choices: ["To track your daily expenses", "To limit your spending", "To plan and manage your finances", "To impress your friends with financial jargon"],
+        choices: ["A. To track your daily expenses", "B. To limit your spending", "C. To plan and manage your finances", "D. To impress your friends with financial jargon"],
         correct: 2
     },
     {
         question: "Which of the following is an example of a fixed expense?",
-        choices: ["Groceries", "Entertainment", "Rent or mortgage", "Impulse purchases"],
+        choices: ["A. Groceries", "B. Entertainment", "C. Rent or mortgage", "D. Impulse purchases"],
         correct: 2
     },
     {
         question: "What does the term “emergency fund” refer to?",
-        choices: ["Money set aside for vacations", "Savings for retirement", "Funds for unexpected expenses", "A secret stash of chocolate"],
+        choices: ["A. Money set aside for vacations", "B. Savings for retirement", "C. Funds for unexpected expenses", "D. A secret stash of chocolate"],
         correct: 2
     },
     {
         question:  "When creating a budget, what percentage of your income should ideally be allocated to savings?",
-        choices: [" 0%", "10%", "20%", "As much as you can afford"],
+        choices: ["A. 0%", "B. 10%", "C. 20%", "D. As much as you can afford"],
         correct: 3
     },
     {
         question: "Which of the following is considered a variable expense?",
-        choices: ["Rent", "Utility bills", "Dining out", "Loan payments"],
+        choices: ["A. Rent", "B. Utility bills", "C. Dining out", "D. Loan payments"],
         correct: 2
     },
 ];
