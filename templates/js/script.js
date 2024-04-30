@@ -27,7 +27,7 @@ const questions = [
 ];
 
 let currentQuestionIndex = 0;
-
+let score = 0;
 
 function displayQuestion() {
     const questionContainer = document.getElementById('question');
@@ -48,21 +48,37 @@ function displayQuestion() {
 function selectAnswer(index) {
     const correctIndex = questions[currentQuestionIndex].correct;
     if (index === correctIndex) {
-        alert('Correct!');
-    } else {
-        alert('Wrong!');
+        score++; // Increment score for correct answers
     }
-}
-
-function nextQuestion() {
     currentQuestionIndex++;
     if (currentQuestionIndex < questions.length) {
         displayQuestion();
     } else {
-        alert('Quiz completed!');
-        currentQuestionIndex = 0; // Reset quiz or handle as needed
-        displayQuestion(); // Restart or show results
+        showResults();
     }
 }
 
-window.onload = displayQuestion; // Initialize the quiz on page load
+function showResults() {
+    const scorePanel = document.getElementById('score-panel');
+    const scoreDisplay = document.getElementById('score');
+    scoreDisplay.textContent = score;
+    scorePanel.style.display = 'block'; // Show score panel
+
+    // Optionally store the score in session storage
+    sessionStorage.setItem('userScore', score);
+}
+
+function nextQuestion() {
+    if (currentQuestionIndex < questions.length) {
+        displayQuestion();
+    } else {
+        showResults();
+    }
+}
+
+window.onload = function() {
+    // Reset score and question index if revisiting the quiz
+    score = 0;
+    currentQuestionIndex = 0;
+    displayQuestion();
+};
