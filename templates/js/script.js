@@ -123,15 +123,21 @@ function addChallenges() {
     }
 }
 
-// Initialize the game, set up the market, and add challenges
+// Initialize game settings
 function startGame() {
     randomizePrices();
-    setDynamicBudget();
-    updateMarketDisplay();
-    addChallenges();
-    updateCart();
+    setDynamicBudget();  // This sets the initial budget based on randomized item prices
+    updateMarketDisplay(); // Update the market display with item prices
+    addChallenges(); // Introduce any challenges
+    updateCart(); // Initial cart update
+    updateBudgetDisplay(); // Make sure to update the budget display
+}
+
+// Ensure this function is called right after setting the budget
+function updateBudgetDisplay() {
     document.getElementById('budget-amount').textContent = 'KES ' + budgetAmount;
 }
 
 window.onload = startGame;
+
 
