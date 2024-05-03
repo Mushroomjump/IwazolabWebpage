@@ -33,9 +33,9 @@ function setDynamicBudget() {
 }
 
 function updateBudgetDisplay() {
-    document.getElementById('budget-amount').textContent = 'KES ' + (budgetAmount - totalCost);
-    document.getElementById('budget-amount').textContent = 'KES ' + budgetAmount;
-
+    const budgetDisplay = document.getElementById('budget-amount');
+    budgetDisplay.textContent = 'KES ' + (budgetAmount - totalCost); // Display the remaining budget
+    console.log("Budget updated to: KES " + (budgetAmount - totalCost));
 }
 
 // Update market display with current prices
@@ -61,15 +61,13 @@ function addItemToCart(item, price) {
     }
     cartItems.push({ item, price });
     totalCost += price;
-    updateCart();
-    updateBudgetDisplay(); // Update display
+    updateCart(); // Updates cart and budget display
 }
 
 // Update the shopping cart display and budget information
 function updateCart() {
     const cartItemsList = document.getElementById('cart-items');
-    const totalCostSpan = document.getElementById('total-cost');
-    cartItemsList.innerHTML = '';
+    cartItemsList.innerHTML = ''; // Clear previous entries
 
     cartItems.forEach(item => {
         const li = document.createElement('li');
@@ -77,8 +75,9 @@ function updateCart() {
         cartItemsList.appendChild(li);
     });
 
-    totalCostSpan.textContent = totalCost;
-    document.getElementById('budget-amount').textContent = 'KES ' + (budgetAmount - totalCost);
+    const totalCostDisplay = document.getElementById('total-cost');
+    totalCostDisplay.textContent = totalCost; // Update the displayed total cost
+    updateBudgetDisplay(); // Ensure the budget display is updated anytime the cart updates
 }
 
 function checkOut() {
@@ -128,18 +127,10 @@ function addChallenges() {
 // Initialize game settings
 function startGame() {
     randomizePrices();
-    setDynamicBudget();  // This sets the initial budget based on randomized item prices
-    updateMarketDisplay(); // Update the market display with item prices
-    addChallenges(); // Introduce any challenges
-    updateCart(); // Initial cart update
-    updateBudgetDisplay(); // Make sure to update the budget display
-}
-
-// Ensure this function is called right after setting the budget
-function updateBudgetDisplay() {
-    document.getElementById('budget-amount').textContent = 'KES ' + budgetAmount;
+    setDynamicBudget();
+    updateMarketDisplay();
+    addChallenges();
+    updateCart(); // Initial update for cart and implicitly updates budget display
 }
 
 window.onload = startGame;
-
-
