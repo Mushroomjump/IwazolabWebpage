@@ -32,6 +32,10 @@ function setDynamicBudget() {
     budgetAmount = minCost + Math.round(Math.random() * 500); // Add up to 500 extra
 }
 
+function updateBudgetDisplay() {
+    document.getElementById('budget-amount').textContent = 'KES ' + (budgetAmount - totalCost);
+}
+
 // Update market display with current prices
 function updateMarketDisplay() {
     const marketStalls = document.getElementById('market-stalls');
@@ -56,6 +60,7 @@ function addItemToCart(item, price) {
     cartItems.push({ item, price });
     totalCost += price;
     updateCart();
+    updateBudgetDisplay(); // Update display
 }
 
 // Update the shopping cart display and budget information
@@ -72,6 +77,22 @@ function updateCart() {
 
     totalCostSpan.textContent = totalCost;
     document.getElementById('budget-amount').textContent = 'KES ' + (budgetAmount - totalCost);
+}
+
+function checkOut() {
+    if (totalCost <= budgetAmount) {
+        alert('Congratulations! You managed your budget well and have KES ' + (budgetAmount - totalCost) + ' left.');
+    } else {
+        alert('Oops! You overspent by KES ' + (totalCost - budgetAmount) + '.');
+    }
+    // Add any additional logic for game reset or navigation here
+    // Example: Reset game or navigate away
+    resetGame();
+}
+
+function resetGame() {
+    // Reset game logic or redirect
+    window.location.reload();  // Simplest form of reset, reloads the page
 }
 
 // Introduce random challenges such as surprise expenses and temptations
