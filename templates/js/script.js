@@ -27,10 +27,16 @@ function randomizePrices() {
 
 // Set a dynamic budget based on potential minimum purchase requirements
 function setDynamicBudget() {
-    const essentialItems = ['Sukuma Wiki', 'Tomatoes', 'Maize Flour'];
+    const essentialItems = ['Sukuma Wiki', 'Tomatoes', 'Maize Flour'];  // Essentials list
     let minCost = essentialItems.reduce((acc, item) => acc + items[item].price, 0);
-    budgetAmount = minCost + Math.round(Math.random() * 500); // Add up to 500 extra
+
+    // Calculate a dynamic additional amount but ensure total is not below KES 600
+    let randomAddition = Math.round(Math.random() * 500);  // Up to KES 500 additional
+    budgetAmount = Math.max(minCost + randomAddition, 600);  // Ensure minimum budget is KES 600
+
+    console.log("Minimum Cost: " + minCost + ", Budget set to: " + budgetAmount);
 }
+
 
 function updateBudgetDisplay() {
     const budgetDisplay = document.getElementById('budget-amount');
@@ -127,10 +133,16 @@ function addChallenges() {
 // Initialize game settings
 function startGame() {
     randomizePrices();
-    setDynamicBudget();
-    updateMarketDisplay();
-    addChallenges();
-    updateCart(); // Initial update for cart and implicitly updates budget display
+    setDynamicBudget();  // Set the initial budget based on randomized item prices
+    updateMarketDisplay(); // Update the market display with item prices
+    updateBudgetDisplay(); // Update the budget display immediately after setting the budget
+
+    // Delay challenges to give the user a chance to see the initial setup
+    setTimeout(() => {
+        addChallenges(); // Introduce any challenges like expenses and temptations
+    }, 1000); // Delay of 1000 milliseconds (1 second)
+
+    updateCart(); // Initial cart update, should be empty initially but set up for future updates
 }
 
 window.onload = startGame;
