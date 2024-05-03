@@ -3,23 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Budgeting Quiz</title>
+    <title>Soko Shopping Spree</title>
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <div id="quiz-container">
-        <h1>Budgeting Knowledge Quiz</h1>
-        <div id="question" class="question">What is the purpose of creating a budget?</div>
-        <ul id="choices" class="choices">
-            <!-- Choices will be populated here by JavaScript -->
-        </ul>
-        <button id="next-button" onclick="nextQuestion()">Next</button>
-        <div id="score-panel" style="display:none;">
-            <h2>Your Final Score: <span id="score"></span></h2>
-            <button onclick="window.location.href='index.html'">Return to Main Page</button>
+    <div id="game-container">
+        <h1>Welcome to the Soko Shopping Spree, [User Name]!</h1>
+        <p>Your budget today is KES <span id="budget"></span>. Spend it wisely to provide for your family.</p>
+
+        <div id="market-stalls">
+            <h2>Market Stalls</h2>
+            <!-- Dynamic market stalls will be added here -->
+        </div>
+
+        <div id="shopping-cart">
+            <h2>Your Shopping Cart</h2>
+            <ul id="cart-items"><!-- Items in cart --></ul>
+            <p>Total Spent: KES <span id="total-spent">0</span></p>
+            <button onclick="checkOut()">Check Out</button>
+        </div>
+
+        <div id="game-messages">
+            <!-- Game messages like challenges or alerts will appear here -->
         </div>
     </div>
-    <script src="/js/script.js"></script>
+    <script src="/js/game.js"></script>
 </body>
 </html>
-    
+
