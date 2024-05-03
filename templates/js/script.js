@@ -31,8 +31,8 @@ function setDynamicBudget() {
     let minCost = essentialItems.reduce((acc, item) => acc + items[item].price, 0);
 
     // Calculate a dynamic additional amount but ensure total is not below KES 600
-    let randomAddition = Math.round(Math.random() * 500);  // Up to KES 500 additional
-    budgetAmount = Math.max(minCost + randomAddition, 600);  // Ensure minimum budget is KES 600
+    let randomAddition = Math.round(Math.random() * 1000);  // Up to KES 500 additional
+    budgetAmount = Math.max(minCost + randomAddition, 500);  // Ensure minimum budget is KES 600
 
     console.log("Minimum Cost: " + minCost + ", Budget set to: " + budgetAmount);
 }
