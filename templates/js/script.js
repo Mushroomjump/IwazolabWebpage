@@ -34,6 +34,8 @@ function setDynamicBudget() {
 
 function updateBudgetDisplay() {
     document.getElementById('budget-amount').textContent = 'KES ' + (budgetAmount - totalCost);
+    document.getElementById('budget-amount').textContent = 'KES ' + budgetAmount;
+
 }
 
 // Update market display with current prices
