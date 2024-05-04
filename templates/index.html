@@ -3,64 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+
+
     <title>Iwazolab Chatbot</title>
-    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="./css/index.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	<style>
-		
-	</style>
+
+    <script src="./js/script.js" defer></script>
 </head>
-<body>
-    <div id="sidebar">
-    <h1>Welcome to Finlingo your AI-powered Financial literacy partner</h1>
-    <ul class="menu">
-        <li>
-            <a href="#">Gamification</a>
-            <ul class="submenu">
-                <li><a href="budgetingquiz.html">Budgeting</a></li>
-                <li><a href="#">Investment</a></li>
-                <li><a href="#">Fintechs</a></li>
-                <li><a href="#">Insurtech</a></li>
-                <li><a href="#">Regtech</a></li>
+<body class="content-grid">
+
+    <header class="capitalize bg-white">
+        <div class="comletebox"></div>
+        <nav class="flex">
+            <button class="mobile-nav-toggle"aria-controls="sidebar-navigation"><span class="sr-only" aria-expanded="false">Menu</span></button>
+            <div class="logo"> <img src="./images/logo2.svg" alt="logo"></div>
+        </nav>
+        <h1 class="hero-heading bg-white">FinLingo your Financial literacy partner</h1>
+
+        <!-- <nav>
+            <ul class="primary-navigation">
+                <li><a href="#" class="nav-link">Sign Up</a></li>
+                <li><a href="#" class="nav-link">Sign In</a></li>
             </ul>
-        </li>
-        <li><a href="taxacademy.html">Tax Academy</a>
-	    <ul class="submenu">
-                <li><a href="#">Tax Trivia</a></li>
-	    </ul>
-	</li>
-        <li><a href="#">Points & Badges</a></li>
-        <li><a href="#">Financial News</a></li>
-	<li><a href="#">Challanges and Quizzes</a></li>
-	<li><a href="#">Financial Health Score</a></li>
-    </ul>
-</div>
-    <header>
-        <button onclick="location.href='signin.html'">Sign In</button>
-        <button onclick="location.href='signup.html'">Sign Up</button>
+        </nav> -->
     </header>
-	<div id="chat-container">
-        <div id="chat-output"></div>
-    	</div>
+
+
+    <main >
+ 
+        <div id="sidebar" class="sidebar bg-white" data-visible="true">
+            <div class="menu dropdown " data-dropdown>
+                <button class="link curent-active" data-dropdown-button >Gamification</button>
+                <div class="dropdown-menu">
+                   <div class="submenu flex">
+                        <a href="budgetingquiz.html" class="link">Budgeting</a>
+                        <a href="#" class="link">Investment</a>
+                        <a href="#" class="link">Fintechs</a>
+                        <a href="#" class="link">Insurtech</a>
+                        <a href="#" class="link">Regtech</a>
+                    </div>
+                </div>
+            </div>
+            <div class="menu flex">
+                <button class="link">Tax Academy</button>
+                <button class="link">Points & Badges</button>
+                <button class="link">Financial News</button>
+                <button class="link">Challenges and Quizzes</button>
+                <button class="link">Financial Health Score</button>
+            </div>
+
+        </div>
+        <div class="chat-main-box">
+            <div id="chat-container" class="chat-container">
+                <div id="chat-output"></div>
+            </div>
+        </div>
+
+    </main>
         <!-- Chatbot script -->
     <script type="text/javascript">
-  (function(d, t) {
-      var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
-      v.onload = function() {
-        window.voiceflow.chat.load({
-          verify: { projectID: '6620ccdab510a5beecdf2d13' },
-          url: 'https://general-runtime.voiceflow.com',
-          versionID: 'production',
-            render: {
-		mode: 'embedded',
-		target: document.getElementById('chat-container'),
-	},
-	autostart: false
-        });
-      }
-      v.src = "https://cdn.voiceflow.com/widget/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);
-  })(document, 'script');
-</script>
+        (function(d, t) {
+            var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+            v.onload = function() {
+                window.voiceflow.chat.load({
+                verify: { projectID: '6620ccdab510a5beecdf2d13' },
+                url: 'https://general-runtime.voiceflow.com',
+                versionID: 'production',
+                    render: {
+                mode: 'embedded',
+                target: document.getElementById('chat-container'),
+            },
+            autostart: false
+                });
+            }
+            v.src = "https://cdn.voiceflow.com/widget/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);
+        })(document, 'script');
+    </script>
 </body>
 </html>
 
