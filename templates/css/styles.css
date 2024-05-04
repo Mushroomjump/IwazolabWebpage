@@ -127,6 +127,9 @@ header{
     letter-spacing: 1.6;
    
 }
+.hero-heading{
+    display: none;
+}
 
 
 nav{
