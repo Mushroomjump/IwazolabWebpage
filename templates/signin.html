@@ -14,14 +14,14 @@
         <link rel="stylesheet" href="./css/styles.css">
         <link rel="stylesheet" href="./css/login.css">
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script src="./js/script.js" defer></script>
+        
     </head>
 <body class="content-grid">
     <div class="main-sign">
         <div class="signup-container flow">
-            <h1 id="sign-title">Sign Up to FinLingo</h1>
+            <h1 id="sign-title">Sign Up</h1>
             <button class="sign-google sign-button flex">
-                <span class="google-logo"><img src="./images/google1.png" alt="google logo" width="34px"> </span>
+                <span class="google-logo"><img src="../images/google1.png" alt="google logo" width="34px"> </span>
                 <span id="sign-google-title">Sign up with google</span>
             </button>
             <div class="sign-option"><h2 class="">or</h2></div>
@@ -51,7 +51,44 @@
                 </form>
             </div>
         </div>
-    </div> 
+    </div>
+
+    <script>
+        const submitEl=document.querySelector("#submit-el");
+        const signGoogleTitle = document.querySelector("#sign-google-title");
+        const signTitle=document.querySelector("#sign-title");
+        const signToggle = document.querySelector("#sign-toggle");
+        const hasAcountEl = document.querySelector("#has-acount-el")
+        const forgotPwd = document.querySelector(".forgot-password");
+        const userNameEl = document.querySelector('.username-el');
+        let isSignUp = true;
+    
+        signToggle.addEventListener("click", function() {
+    
+            if (isSignUp) {
+                signTitle.innerHTML= "Sign Up FinLingo";
+                submitEl.innerHTML = "Sign Up";
+                signGoogleTitle.innerHTML = "Sign up with Google";
+                hasAcountEl.innerHTML ="Already have an account?";
+                signToggle.innerHTML="Sign In";
+                forgotPwd.setAttribute("data-visible", "true");
+                userNameEl.setAttribute("data-visible", "true");
+                isSignUp = false;
+            } else {
+                signTitle.innerHTML= "Sign In FinLingo";
+                submitEl.innerHTML = "Sign In";
+                signGoogleTitle.innerHTML = "Sign in with Google";
+                hasAcountEl.innerHTML ="Don't have an account?"
+                signToggle.innerHTML="Sign Up";
+                forgotPwd.setAttribute("data-visible", "false");
+                userNameEl.setAttribute("data-visible", "false");
+                isSignUp = true;
+            }
+
+            console.log(isSignUp)
+        });
+    </script>
+    
 </body>
 </html>
 
