@@ -1,17 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Sign In</title>
-</head>
-<body>
-    <h1>Sign In</h1>
-    <form id="signinForm" action="/signin" method="post">
-        <input type="text" name="username" required placeholder="Enter Username">
-        <input type="password" name="password" required placeholder="Enter Password">
-        <button type="submit">Sign In</button>
-    </form>
-    <script src="#"></script>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+        <!-- fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+    
+    
+        <title>Iwazolab Chatbot</title>
+        <link rel="stylesheet" href="./css/styles.css">
+        <link rel="stylesheet" href="./css/login.css">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <!-- <script src="./js/script.js" defer></script> -->
+    </head>
+<body class="content-grid">
+    <div class="main-sign">
+        <div class="signup-container flow">
+            <h1 id="sign-title">Sign Up to FinLingo</h1>
+            <button class="sign-google sign-button flex">
+                <span class="google-logo"><img src="./images/google1.png" alt="google logo" width="34px"> </span>
+                <span id="sign-google-title">Sign up with google</span>
+            </button>
+            <div class="sign-option"><h2 class="">or</h2></div>
+            <div class="form-input-container">
+                <form id="signinForm" class="flow" action="/signin" method="post">
+                    <div class="username-el form-fields flow" data-visible="true">
+                        <label for="username" class="field">username</label>
+                        <input type="text" class="field" name="username " required placeholder="Enter Username" > 
+                    </div>
+                    <div class="form-fields flow">
+                        <label for="email" class="field">Email</label>
+                        <input type="text" class="field" name="email" required placeholder="Enter Username" > 
+                    </div>
+                    <div class="form-fields flow">
+                        <div class="password-field flex">
+                            <label for="password" class="field">password</label>
+                            <span class="forgot-password" data-visible="true"><a href="#">Forgot Password?</a></span>
+                        </div>
+                        <input type="password" name="password" required placeholder="Enter Password">
+                    </div>
+                    <div class=""><button type="submit" id="submit-el" class="sign-button">Sign Up</button></div>
+                    <div class="form-fields footer-field flex">
+                        <span id="has-acount-el">Already have an account?</span>
+                        <span><a href="#" id="sign-toggle">Sign In</a></span>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div> 
 </body>
 </html>
 
