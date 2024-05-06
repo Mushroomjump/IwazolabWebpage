@@ -41,6 +41,42 @@ toggleBtn.addEventListener('click',function(){
 
 })
 
+//========login and sign up js ========//
+const submitEl=document.querySelector("#submit-el");
+const signGoogleTitle = document.querySelector("#sign-google-title");
+const signTitle=document.querySelector("#sign-title");
+const signToggle = document.querySelector("#sign-toggle");
+const hasAcountEl = document.querySelector("#has-acount-el")
+const forgotPwd = document.querySelector(".forgot-password");
+const userNameEl = document.querySelector('.username-el');
+let isSignUp = true;
+
+signToggle.addEventListener("click", function() {
+console.log("botton cli")
+if (isSignUp) {
+    signTitle.innerHTML= "Sign Up FinLingo";
+    submitEl.innerHTML = "Sign Up";
+    signGoogleTitle.innerHTML = "Sign up with Google";
+    hasAcountEl.innerHTML ="Already have an account?";
+    signToggle.innerHTML="Sign In";
+    forgotPwd.setAttribute("data-visible", "true");
+    userNameEl.setAttribute("data-visible", "true");
+    isSignUp = false;
+} else {
+    signTitle.innerHTML= "Sign In FinLingo";
+    submitEl.innerHTML = "Sign In";
+    signGoogleTitle.innerHTML = "Sign in with Google";
+    hasAcountEl.innerHTML ="Don't have an account?"
+    signToggle.innerHTML="Sign Up";
+    forgotPwd.setAttribute("data-visible", "false");
+    userNameEl.setAttribute("data-visible", "false");
+    isSignUp = true;
+}
+
+console.log(isSignUp)
+});
+
+
 
 
 
