@@ -22,20 +22,15 @@
         <div class="comletebox"></div>
         <nav class="flex">
             <button class="mobile-nav-toggle"aria-controls="sidebar-navigation"><span class="sr-only" aria-expanded="false">Menu</span></button>
-            <div class="logo"> <img src="./images/logo2.svg" alt="logo"></div>
+            <div class="logo"><span class="sr-only">logo</span></div>
         </nav>
-        <h1 class="hero-heading bg-white">FinLingo your Financial literacy partner</h1>
-
-        <!-- <nav>
-            <ul class="primary-navigation">
-                <li><a href="#" class="nav-link">Sign Up</a></li>
-                <li><a href="#" class="nav-link">Sign In</a></li>
-            </ul>
-        </nav> -->
     </header>
 
 
     <main >
+        <div class="hero-intro">
+            <h1 class="hero-heading bg-white">FinLingo your Financial literacy partner</h1>
+        </div>
  
         <div id="sidebar" class="sidebar bg-white" data-visible="true">
             <div class="menu dropdown " data-dropdown>
@@ -56,7 +51,20 @@
                 <button class="link">Financial News</button>
                 <button class="link">Challenges and Quizzes</button>
                 <button class="link">Financial Health Score</button>
-                <a href='signin.html'>test sign</a>
+
+
+                <div class="profile flex">
+                    <button class="profile-btn logout-btn flex">
+                        <span class="logout-logo"><img src="./images/exit (1).png" alt="logout"></span>
+                        <span class="profile-text"><a href="./signin.html">test sigin</a></span>
+                    </button>
+                    <button class="profile-btn flex">
+                        <span class="profile-img">G&A</span>
+                        <span class="profile-text">Profile Name</span>
+                    </button>
+
+                   
+                </div>
             </div>
 
         </div>
