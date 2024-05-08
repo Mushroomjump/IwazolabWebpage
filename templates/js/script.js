@@ -1,17 +1,21 @@
  // ===== JS index.html ========
 
 // == Dropdown Menu Script ==
-document.addEventListener('click', function(e) {
-    const isDropdownButton = e.target.matches("[data-dropdown-button]");
-    const isInsideDropdown = e.target.closest('[data-dropdown]') !== null;
+document.addEventListener('DOMContentLoaded', function() {
+    const toggleBtn = document.querySelector('.mobile-nav-toggle');
+    const barEl = document.querySelector('#sidebar');
 
-    if (!isDropdownButton && !isInsideDropdown) {
-        // If the click is outside the dropdown, close all dropdowns
-        document.querySelectorAll("[data-dropdown].active").forEach(dropdown => {
-            dropdown.classList.remove('active');
+    if (toggleBtn && barEl) {
+        toggleBtn.addEventListener('click', function() {
+            const isVisible = barEl.getAttribute("data-visible") === "true";
+            toggleBtn.setAttribute("aria-expanded", !isVisible);
+            barEl.setAttribute("data-visible", !isVisible);
         });
-        return;
+    } else {
+        console.log("Elements not found, check your HTML IDs and class names.");
     }
+});
+
 
     let currentDropdown;
     if (isDropdownButton) {
