@@ -1,26 +1,32 @@
  // ===== JS index.html ========
 
-
-// == dropdown menu ==
-
+// == Dropdown Menu Script ==
 document.addEventListener('click', function(e) {
     const isDropdownButton = e.target.matches("[data-dropdown-button]");
-    if (!isDropdownButton && e.target.closest('[data-dropdown]') != null) return;
+    const isInsideDropdown = e.target.closest('[data-dropdown]') !== null;
+
+    if (!isDropdownButton && !isInsideDropdown) {
+        // If the click is outside the dropdown, close all dropdowns
+        document.querySelectorAll("[data-dropdown].active").forEach(dropdown => {
+            dropdown.classList.remove('active');
+        });
+        return;
+    }
 
     let currentDropdown;
     if (isDropdownButton) {
+        // Toggle the active state of the current dropdown
         currentDropdown = e.target.closest('[data-dropdown]');
         currentDropdown.classList.toggle('active');
     }
 
+    // Close other dropdowns except the current one
     document.querySelectorAll("[data-dropdown].active").forEach(dropdown => {
-        if (dropdown === currentDropdown) return;
-        dropdown.classList.remove('active');
+        if (dropdown !== currentDropdown) {
+            dropdown.classList.remove('active');
+        }
     });
 });
-
-
-
 
 
 // ======  navigations ==========//
