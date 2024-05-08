@@ -28,6 +28,9 @@ img{
     --clr-txt-dark: #828fa3;
     --clr-brand:#8332e9;
 
+    --clr-blue:#3d82e2;
+    
+
     /* font sizes */
     --fs-900: clamp(.8rem, 1vw,.9rem);
     --fs-800: clamp(1rem,1vw + .5rem,1.5rem);
@@ -116,6 +119,7 @@ body{
 /* ====Colors====== */
 
 .bg-white{ background-color:var(--clr-txt);}
+.bg-white{ background-color:var(--clr-blue);}
 .bg-purple{ background-color:var(--clr-dark-purple);}
 .bg-light-purple{ background-color:var(--clr-light-purple)}
 
@@ -163,6 +167,7 @@ header{
     width: 100%;
     z-index: 888;
     font-size: var(--fs-900);
+    color: var(--clr-txt);
     
 }
 
@@ -243,7 +248,7 @@ main{
     max-width: 200px;
     background: transparent;
     border: 0;
-    color: var(--clr-txt-dark);
+    color: var(--clr-txt);
     font-size: var(--fs-800);
     border-top-right-radius:4rem;
     border-bottom-right-radius: 4rem;
@@ -255,7 +260,7 @@ main{
 }
 
 .curent-active{
-    background-color: var(--clr-dark-purple);
+    /* background-color: var(--clr-dark-purple); */
   
     
 }
@@ -278,11 +283,15 @@ main{
 }
 
 .dropdown-menu {
+    --left-pad:3rem;
     position: absolute;
-    left: 0;
-    top: calc(100% + .25rem);
-    background-color:var(--clr-dark-purple);
-    width: 100%;
+    left:var(--left-pad);
+    top: 100%;
+    /* top: calc(100% + .25rem); */
+    background-color:var(--clr-txt);
+    /* border: 1px solid red; */
+
+    width:100%;
     padding: .75rem;
     border-radius: .25rem ;
     box-shadow: 0 2px 5px 0 rgba(0,0,0,.1);
@@ -292,12 +301,24 @@ main{
     transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
 }
 
+/* .dropdown-menu > *{
+    color: red;
+} */
+
 .dropdown-menu > .submenu .link{
     width: 100%;
     text-decoration: none;
     margin: 0;
     padding:0;
+    /* color: red; */
     color:var(--clr-txt);
+    border: 1px solid darkblue;
+    background-color: maroon;
+    padding:.2em;
+    border-radius: .6rem;
+    text-align: center;
+    background:var();
+   
 }
 
 .dropdown.active > button + .dropdown-menu {
@@ -340,7 +361,7 @@ main{
 
 .profile-text{
     font-size: var(--fs-800);
-    color: var(--clr-txt-dark);
+    color: var(--clr-txt);
     padding: .3rem;
 }
 
@@ -349,6 +370,7 @@ main{
 .chat-container,
 .chat-main-box{
     background-color: #f4f7fd;
+    
 }
 
 
@@ -356,6 +378,7 @@ main{
 @media(min-width:45em){
     .comletebox{
         --big-logo:url(../images/logo2.svg);
+        background: var(--clr-txt);
         background-image: var(--big-logo);
         background-repeat: no-repeat;
         background-position: center center;
@@ -395,16 +418,22 @@ main{
     }
 
     .sidebar{
+        /* border: 2px solid yellow; */
         width:var(--sidebar-width) ;
+        /* background-color: var(--clr-txt); */
     } 
 
     .chat-main-box {
+        position: absolute;
+        height: 100vh;
+       border: 1px solid red;
+
+        width: 100%;
         max-width: calc(100% - var(--sidebar-width));
         margin-left: var(--sidebar-width); 
     }
 
     .chat-container{
-       /* max-width: 900px; */
         margin: 0 auto;
     }
     
