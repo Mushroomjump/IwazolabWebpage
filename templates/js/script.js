@@ -207,5 +207,3 @@ function startGame() {
 
     updateCart(); // Initial cart update, should be empty initially but set up for future updates
 }
-
-window.onload = startGame;
