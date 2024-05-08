@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
             dropdown.classList.remove('active');
         }
     });
-});
+
 
 
 // ======  navigations ==========//
