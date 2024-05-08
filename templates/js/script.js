@@ -1,21 +1,31 @@
  // ===== JS index.html ========
+document.addEventListener('DOMContentLoaded', function () {
+    const budgetingLink = document.querySelector('a[href="budgetingquiz.html"]');
 
-// == Dropdown Menu Script ==
-document.addEventListener('DOMContentLoaded', function() {
-    const toggleBtn = document.querySelector('.mobile-nav-toggle');
-    const barEl = document.querySelector('#sidebar');
-
-    if (toggleBtn && barEl) {
-        toggleBtn.addEventListener('click', function() {
-            const isVisible = barEl.getAttribute("data-visible") === "true";
-            toggleBtn.setAttribute("aria-expanded", !isVisible);
-            barEl.setAttribute("data-visible", !isVisible);
+    // Ensure the "Budgeting" link is present before attaching the event listener
+    if (budgetingLink) {
+        budgetingLink.addEventListener('click', function (e) {
+            e.preventDefault();  // Prevent default link behavior (navigation)
+            startGame();  // Initialize the budgeting game
+            // Optionally navigate to budgetingquiz.html after initializing the game
         });
     } else {
-        console.log("Elements not found, check your HTML IDs and class names.");
+        console.log("The Budgeting link was not found in the document.");
     }
 });
 
+// == Dropdown Menu Script ==
+document.addEventListener('click', function(e) {
+    const isDropdownButton = e.target.matches("[data-dropdown-button]");
+    const isInsideDropdown = e.target.closest('[data-dropdown]') !== null;
+
+    if (!isDropdownButton && !isInsideDropdown) {
+        // If the click is outside the dropdown, close all dropdowns
+        document.querySelectorAll("[data-dropdown].active").forEach(dropdown => {
+            dropdown.classList.remove('active');
+        });
+        return;
+    }
 
     let currentDropdown;
     if (isDropdownButton) {
@@ -30,8 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
             dropdown.classList.remove('active');
         }
     });
-
-
+});
 
 // ======  navigations ==========//
 
