@@ -4,7 +4,7 @@
 // == dropdown menu ==
 
 document.addEventListener('click', function(e) {
-    const isDropdownButton = e.target.matches("[data-dropdown-button]");
+    const isDropdownButton = e.target.matches("[data-dropdown-menu]");
     if (!isDropdownButton && e.target.closest('[data-dropdown]') != null) return;
 
     let currentDropdown;
