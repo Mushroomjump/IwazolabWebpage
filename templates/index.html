@@ -25,14 +25,33 @@
             <div class="logo"><span class="sr-only">logo</span></div>
         </nav>
     </header>
-    <main >
-        <div class="hero-intro">
-            <h1 class="hero-heading">FinLingo your Financial literacy partner</h1>
-        </div>
-   <div class="menu flex">
+   <main >
+
+        <div id="sidebar" class="sidebar bg-white" data-visible="true">
+            <div class="menu dropdown " data-dropdown>
+                <button class="link curent-active" data-dropdown-button >Gamification</button>
+                <div class="dropdown-menu">
+                   <div class="submenu flex">
+                        <a href="budgetingquiz.html" class="link">Budgeting</a>
+                        <a href="#" class="link">Investment</a>
+                        <a href="#" class="link">Fintechs</a>
+                        <a href="#" class="link">Insurtech</a>
+                        <a href="#" class="link">Regtech</a>
+                    </div>
+                </div>
+            </div>
+            <div class="menu flex">
                 <button class="link">Tax Academy</button>
                 <button class="link">Points & Badges</button>
-                <button class="link">Financial News</button>
+            </div>
+
+        </div>
+        <div class="chat-main-box">
+            <div id="chat-container" class="chat-container">
+                <div id="chat-output"></div>
+            </div>
+        </div>
+
 <!--                 <button class="link">Financial News</button>
                 <button class="link">Challenges and Quizzes</button>
                 <button class="link">Financial Health Score</button>
