@@ -1,17 +1,41 @@
  // ===== JS index.html ========
 document.addEventListener('DOMContentLoaded', function () {
+    // Ensure the "Budgeting" link is present and navigate to the budgeting quiz page
     const budgetingLink = document.getElementById('budgeting-link');
-
-    // Ensure the "Budgeting" link is present before attaching the event listener
     if (budgetingLink) {
         budgetingLink.addEventListener('click', function () {
-            // No need to prevent the default since we want to navigate
             console.log("Navigating to budgeting quiz page...");
         });
     } else {
         console.log("The Budgeting link was not found in the document.");
     }
+
+    // Handle dropdown menu interactions
+    document.addEventListener('click', function (e) {
+        const isDropdownButton = e.target.matches("[data-dropdown-button]");
+        const isInsideDropdown = e.target.closest('[data-dropdown]') !== null;
+
+        if (!isDropdownButton && !isInsideDropdown) {
+            document.querySelectorAll("[data-dropdown].active").forEach(dropdown => {
+                dropdown.classList.remove('active');
+            });
+            return;
+        }
+
+        let currentDropdown;
+        if (isDropdownButton) {
+            currentDropdown = e.target.closest('[data-dropdown]');
+            currentDropdown.classList.toggle('active');
+        }
+
+        document.querySelectorAll("[data-dropdown].active").forEach(dropdown => {
+            if (dropdown !== currentDropdown) {
+                dropdown.classList.remove('active');
+            }
+        });
+    });
 });
+
 
     let currentDropdown;
     if (isDropdownButton) {
