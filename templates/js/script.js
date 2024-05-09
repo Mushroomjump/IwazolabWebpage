@@ -193,3 +193,5 @@ function startGame() {
 
     updateCart(); // Initial cart update, should be empty initially but set up for future updates
 }
+// Ensure the game starts on page load in budgetingquiz.html
+document.addEventListener('DOMContentLoaded', startGame);
