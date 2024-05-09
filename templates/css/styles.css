@@ -19,25 +19,29 @@ img{
 /* Custome Properties */
 
 :root{
-    --ff-plus-sans:"Plus Jakarta Sans", sans-serif;
+    --ff-plus-sans:sans-serif;
 
     /* colors */
     --clr-dark-purple:#3C096C;
+    --clr-dark:#05395e;
+    --clr-bdark:215, 74%, 56%;
     --clr-light-purple:#5A189A;
     --clr-txt:#fff;
     --clr-txt-dark: #828fa3;
     --clr-brand:#8332e9;
 
-    --clr-blue:#3d82e2;
+    --clr-blue:#5184C0;
+    --clr-black:black;
     
 
     /* font sizes */
     --fs-900: clamp(.8rem, 1vw,.9rem);
-    --fs-800: clamp(1rem,1vw + .5rem,1.5rem);
+    --fs-800: clamp(1.5rem,1vw + .5rem,3rem);
     --fs-700:clamp(1rem,2vw,1.5rem);
  
     /* fixed widths */
-    --sidebar-width:280px;
+    --sidebar-width:100%;
+    --header-height:100px;
 }
 
 
@@ -46,7 +50,9 @@ body{
     font-size: var(--fs-700);
     margin:0;
     background-color: #f4f7fd;
+    overflow:visible;
 }
+
 
 /* Components */
 
@@ -154,12 +160,13 @@ header{
     top: 0;
     left: 0;
     width: 100%;
-    height: 100px;
+    height: var(--header-height);
     padding: 2em 0;
     margin: 0;
+    background-color: var(--clr-light-purple);
   
 }
-
+/* 
 .hero-intro{
     position: fixed;
     top: 100px;
@@ -171,7 +178,7 @@ header{
     background: var(--clr-txt);
     color: var(--clr-txt-dark);
     
-}
+} */
 
 nav{
     align-items: center;
@@ -199,7 +206,7 @@ nav{
 }
 
 .logo{
-    background-image: url(../images/logo3.svg);
+    background-image: url(../images/logo1.svg);
     width:50%;
     height: 50px;
     background-repeat: no-repeat;
@@ -211,7 +218,7 @@ nav{
 
 main{
     position: relative;
-    top: 150px ;
+    top:calc((var(--header-height) - 60px));
 }
 
 
@@ -223,10 +230,13 @@ main{
     z-index: 1000;
     left: 0;
     top: 100px;
-    width: 80%;
+    width:var(--sidebar-width);
     height: 100vh;
     transform: translateX(-100%);
     transition: transform 500ms ease-in-out;
+    background:var(--clr-blue);
+
+  
     
 }
 
@@ -247,7 +257,7 @@ main{
     padding:1rem;
     width: 90%;
     text-align: left;
-    max-width: 200px;
+    max-width: 250px;
     background: transparent;
     border: 0;
     color: var(--clr-txt);
@@ -256,17 +266,11 @@ main{
     border-bottom-right-radius: 4rem;
 }
 
-.link:hover{
+.link:hover,
+.logout-btn{
     background: var(--clr-light-purple);
     color: var(--clr-txt);
 }
-
-.curent-active{
-    /* background-color: var(--clr-dark-purple); */
-  
-    
-}
-
 
 .dropdown{
     position: relative;
@@ -285,14 +289,11 @@ main{
 }
 
 .dropdown-menu {
-    --left-pad:3rem;
+    --left-pad:0;
     position: absolute;
     left:var(--left-pad);
     top: 100%;
-    /* top: calc(100% + .25rem); */
     background-color:var(--clr-txt);
-    /* border: 1px solid red; */
-
     width:100%;
     padding: .75rem;
     border-radius: .25rem ;
@@ -303,24 +304,23 @@ main{
     transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
 }
 
-/* .dropdown-menu > *{
-    color: red;
-} */
-
 .dropdown-menu > .submenu .link{
     width: 100%;
     text-decoration: none;
     margin: 0;
     padding:0;
-    /* color: red; */
-    color:var(--clr-txt);
-    border: 1px solid darkblue;
-    background-color: maroon;
+    color:var(--clr-black);
+    font-size: 1.3rem;
     padding:.2em;
     border-radius: .6rem;
-    text-align: center;
-    background:var();
+    text-align: left;
+    background:none;
    
+}
+
+.link-drop:hover{
+    transform-origin: left;
+    transform: scale(1.5);
 }
 
 .dropdown.active > button + .dropdown-menu {
@@ -332,27 +332,44 @@ main{
 /* logout and profile  */
 
 .profile{
-    flex-direction:column-reverse;
+    flex-direction:column;
     border-top: 1px solid var(--clr-txt-dark);
-    gap: .3em;
+    gap: .1em;
     width: 100%;
-    /* margin: 0 auto; */
+    position: relative;
+    bottom:-18.75rem;
+    
+}
+
+.profile-btn.logout-btn{
+    text-align: left;
+    color: var(--clr-txt);
+    font-size:var(--fs-700);
+    padding: 1rem;
+}
+
+.logout-btn:hover{
+    color: red;
 }
 
 .profile-btn{
+   
     padding: .6em;
     align-items: center;
     border: none;
     background:none;
-    /* border-top-right-radius:4rem;
-    border-bottom-right-radius: 4rem; */
+    gap: .1em;
 }
 
 .profile-img,.logout-logo{
     aspect-ratio: 1;
     align-content: center;
-    padding-inline:.6rem;
+    padding-inline:.2rem;
       
+}
+
+.profile-profile {
+    align-self: flex-end;
 }
 
 .profile-img{
@@ -362,25 +379,39 @@ main{
 }
 
 .profile-text{
+   
     font-size: var(--fs-800);
     color: var(--clr-txt);
     padding: .3rem;
 }
 
 
+
 /* chat bot styles */
 .chat-container,
 .chat-main-box{
     background-color: #f4f7fd;
+    overflow-y: hidden;
     
 }
+
+#chat-output{
+    overflow-y: hidden;
+}
+
+/* .chat-container[data-isblur="false"]{
+    z-index: 2000;
+    filter: blur(.5rem);
+} */
 
 
 
 @media(min-width:45em){
     .comletebox{
+
+        --sidebar-width:min(415px,30%);
         --big-logo:url(../images/logo2.svg);
-        background: var(--clr-txt);
+        background: var(--clr-light-purple);
         background-image: var(--big-logo);
         background-repeat: no-repeat;
         background-position: center center;
@@ -388,7 +419,6 @@ main{
         position: fixed;
         left: 0;
         top: 0;
-        border-right: 1.5px solid var(--clr-txt-dark);
         width: var(--sidebar-width);
         height: 100px;
     }
@@ -400,6 +430,7 @@ main{
 
     header{
       text-align:left;
+      background: var(--clr-light-purple);
        
     }
     .logo,
@@ -420,23 +451,26 @@ main{
     }
 
     .sidebar{
-        /* border: 2px solid yellow; */
+        --sidebar-width:30%;
         width:var(--sidebar-width) ;
-        /* background-color: var(--clr-txt); */
+        max-width: 415px;
+   
     } 
 
     .chat-main-box {
-        position: absolute;
-        height: 100vh;
-      
-
+        --sidebar-width:min(415px,30%);
+        position: fixed;
+        top: var(--header-height);
+        bottom:0;
         width: 100%;
         max-width: calc(100% - var(--sidebar-width));
-        margin-left: var(--sidebar-width); 
+        margin-left:var(--sidebar-width); 
     }
 
     .chat-container{
-        margin: 0 auto;
+        position: fixed;
+        top:calc((var(--header-height) - 60px));
+        bottom:0;
     }
     
 }
