@@ -22,11 +22,14 @@ img{
     --ff-plus-sans:"Plus Jakarta Sans", sans-serif;
 
     /* colors */
-    --clr-dark-purple:#3C096C;
-    --clr-light-purple:#5A189A;
+    --clr-dark-purple:#00B2CA;
+    --clr-light-purple:#073B4C;
     --clr-txt:#fff;
-    --clr-txt-dark: #828fa3;
-    --clr-brand:#8332e9;
+    --clr-txt-dark: ##fff;
+    --clr-brand:#00B2CA;
+    --clr-hover-link: #00B2CA;
+    --clr-: #c4e5df;
+
 
     /* font sizes */
     --fs-900: clamp(5rem, 8vw + 1rem, 9.375rem);
@@ -40,7 +43,7 @@ img{
 
 
 
-    --sidebar-width:280px;
+    --sidebar-width:20%;
 }
 
 
@@ -177,7 +180,7 @@ main{
     z-index: 1000;
     left: 0;
     top: 100px;
-    width: 80%;
+    width: 50%;
     height: 100vh;
     transform: translateX(-100%);
     transition: transform 500ms ease-in-out;
@@ -217,10 +220,9 @@ main{
 }
 
 .link:hover{
-    background: var(--clr-light-purple);
-    color: var(--clr-txt);
+    background: var(--clr-hover-link);
+    color: #F1EAEA;
 }
-
 .curent-active{
     background-color: var(--clr-dark-purple);
   
@@ -231,6 +233,10 @@ main{
 .dropdown{
     position: relative;
    
+}
+.link>.dropdown:hover{
+    background: var(--clr-hover-link);
+    color: #F1EAEA;
 }
 
 .submenu{
@@ -278,14 +284,14 @@ main{
 /* chat bot styles */
 .chat-container,
 .chat-main-box{
-    background-color: #f4f7fd;
+    background-color: #e1e2e5;
 }
 
 
 
 @media(min-width:45em){
     .comletebox{
-        --big-logo:url(/templates/images/logo2.svg);
+        --big-logo:url(/templates/images/2.png);
         background-image: var(--big-logo);
         background-repeat: no-repeat;
         background-position: center center;
@@ -295,7 +301,7 @@ main{
         top: 0;
         border-right: 1.5px solid var(--clr-txt-dark);
         width: var(--sidebar-width);
-        height: 100px;
+        height: 10px;
     }
     nav{
         display: block;

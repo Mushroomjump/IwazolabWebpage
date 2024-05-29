@@ -1,154 +1,35 @@
-.flow > *:where(:not(:first-child)) {
-    margin-top: var(--flow-space,2rem);
-    /* outline: 1px solid red; */
+.main {
+  padding: 20px;
+  font-family: Arial;
+  box-shadow: 5px 5px 7px 5px #8888;
+  width: 60%;
+  margin-left: 20%;
+  margin-top: 7%;
 }
 
-.content-grid {
-    --padding-inline: 1rem;
-    --content-max-width: 1000px;
-    --breakout-max-width: 1200px;
-  
-    --breakout-size: calc(
-      (var(--breakout-max-width) - var(--content-max-width)) / 2
-    );
-  
-    display: grid;
-    grid-template-columns:
-      [full-width-start] minmax(var(--padding-inline),1fr)
-      [breakout-start] minmax(0, var(--breakout-size))
-      [content-start] min(
-        100% - (var(--padding-inline) * 2),
-        var(--content-max-width)
-      )
-      [content-end]
-      minmax(0, var(--breakout-size)) [breakout-end]
-      minmax(var(--padding-inline), 1fr) [full-width-end];
-  }
-  
-  .content-grid > :not(.breakout, .full-width),
-  .full-width > :not(.breakout, .full-width) {
-    grid-column: content;
-  }
-  
-  .content-grid > .breakout {
-    grid-column: breakout;
-  }
-  
-  .content-grid > .full-width {
-    grid-column: full-width;
-  
-    display: grid;
-    grid-template-columns: inherit;
-  }
-
-.main-sign {
-    
-   
-
+.main h1 {
+  font-size: 36px;
+  text-align: center;
+  font-family: Arial;
 }
 
-.signup-container{
-    /* border: 2px solid blue; */
-    max-width: 500px;
-    min-height: 400px;
-    /* background-color: var(--clr-txt); */
-   
-
-}
-.sign-title{
-    font-size: 2rem;
-    text-align: left;
-    padding: 1rem;
-    letter-spacing: 1.6;
+input {
+  font-family: Arial, Helvetica, sans-serif;
+  width: 60%;
+  font-size: 20px;
+  padding: 12px 20px;
+  margin: 8px;
+  border: none;
+  border-bottom: 2px solid #764776;
 }
 
-.sign-button{
-    width: 100%;
-    /* test fonts */
-    font-size: 1.5rem;
-    padding: 1rem;
-    border: 1.5px solid var(--clr-dark-txt);
-    border-radius: 2rem;  
-    background: var(--clr-dark-purple);
-    color: var(--clr-txt); 
+input[type="submit"] {
+  font-family: Arial, Helvetica, sans-serif;
+  width: 60%;
+  background-color: #764776;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  margin: 4px 2px;
+  border-radius: 10px;
 }
-
-.sign-google{
-    --flex-gap:1em;
-    align-items: center;
-    gap: var(--flex-gap);
-    justify-content: center;
-    background: var(--clr-txt-dark);
-}
-
-.sign-option{
-    position: relative;
-    width: 100%;
-    text-align: center;
-}
-.sign-option ::before{
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 50%;
-    width: 40%;
-    height:1.5px;
-    background:black;
-}
-
-.sign-option ::after{
-    content: "";
-    position: absolute;
-    right: 0;
-    top: 50%;
-    width: 40%;
-    height:1.5px;
-    background:black;
-    transform: translateY(50%);
-}
-
-.form-fields{
-    --flow-space:1em;
-
-}
-
-/* hiding ans showing user name and forgot passd */
-
-.username-el[data-visible='false'],
-.forgot-password[data-visible='false']{
-    display: none;
-}
-
-.form-fields >{
-    display: block;
-
-}
-.form-fields label{
-    text-transform: capitalize;
-    /* test font  */
-    font-size:1.4rem;
-    letter-spacing: 1.6;
-    text-align: left;
-}
-
-.form-fields input{
-    width: 100%;
-    border-radius: .6rem;
-    border: 0;
-    padding: 1.5rem;
-}
-
-.password-field{
-    --flex-gap:1rem;
-    gap: var(--flex-gap);
-    align-items: center;
-    justify-content: space-between;
-}
-
-.footer-field{
-    --flex-gap:0;
-    gap: var(--flex-gap);
-    align-items: center;
-    justify-content: center;
-}
-

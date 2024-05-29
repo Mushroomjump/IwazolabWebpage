@@ -1,94 +1,74 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-        <!-- fonts -->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
-    
-    
-        <title>Iwazolab Chatbot</title>
-        <link rel="stylesheet" href="./css/styles.css">
-        <link rel="stylesheet" href="./css/login.css">
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        
-    </head>
-<body class="content-grid">
-    <div class="main-sign">
-        <div class="signup-container flow">
-            <h1 id="sign-title">Sign Up</h1>
-            <button class="sign-google sign-button flex">
-                <span class="google-logo"><img src="../images/google1.png" alt="google logo" width="34px"> </span>
-                <span id="sign-google-title">Sign up with google</span>
-            </button>
-            <div class="sign-option"><h2 class="">or</h2></div>
-            <div class="form-input-container">
-                <form id="signinForm" class="flow" action="/signin" method="post">
-                    <div class="username-el form-fields flow" data-visible="true">
-                        <label for="username" class="field">username</label>
-                        <input type="text" class="field" name="username " required placeholder="Enter Username" > 
-                    </div>
-                    <div class="form-fields flow">
-                        <label for="email" class="field">Email</label>
-                        <input type="text" class="field" name="email" required placeholder="Enter Username" > 
-                    </div>
-                    <div class="form-fields flow">
-                        <div class="password-field flex">
-                            <label for="password" class="field">password</label>
-                            <span class="forgot-password" data-visible="true"><a href="#">Forgot Password?</a></span>
-                        </div>
-                        <input type="password" name="password" required placeholder="Enter Password">
-                    </div>
-                    <div class=""><button type="submit" id="submit-el" class="sign-button">Sign Up</button></div>
-                    <div class="form-fields footer-field flex">
-                        <span id="has-acount-el">Already have an account?</span>
-                        <span><a href="#" id="sign-toggle">Sign In</a></span>
-                    </div>
+<html>
 
-                </form>
-            </div>
+<head>
+  <link rel="stylesheet" href="./css/login.css" />
+  <title>Form</title>
+</head>
+
+<body>
+  
+  <div class="login-wrap">
+    
+    <div class="login-html">
+    <div class="error" id="errorMsg"></div>
+
+      <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Sign In</label>
+      <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Sign Up</label>
+      <div class="login-form">
+        <div class="sign-in-htm">
+          <form action="/api/user" method="get">
+          <div class="group">
+            <label for="user" class="label">Username</label>
+            <input id="logName" type="text" class="input">
+          </div>
+          <div class="group">
+            <label for="pass" class="label">Password</label>
+            <input id="logPassword" type="password" class="input" data-type="password">
+          </div>
+          <div class="group">
+            <input id="check" type="checkbox" class="check" checked>
+            <label for="check"><span class="icon"></span> Keep me Signed in</label>
+          </div>
+          <div class="group">
+            <input type="submit" class="button" value="Sign In">
+          </div>
+          <div class="hr"></div>
+          <div class="foot-lnk">
+            <a href="#forgot">Forgot Password?</a>
+          </div>
+          </form>
         </div>
+        <div class="sign-up-htm">
+          <form action="/api/user" method="post"></form>
+          <div class="group">
+            <label for="user" class="label">Username</label>
+            <input id="user" type="text" class="input">
+          </div>
+          <div class="group">
+            <label for="pass" class="label">Password</label>
+            <input id="pass" type="password" class="input" data-type="password">
+          </div>
+          <div class="group">
+            <label for="pass" class="label">Repeat Password</label>
+            <input id="pass" type="password" class="input" data-type="password">
+          </div>
+          <div class="group">
+            <label for="pass" class="label">Email Address</label>
+            <input id="pass" type="text" class="input">
+          </div>
+          <div class="group">
+            <input type="submit" class="button" value="Sign Up">
+          </div>
+          <div class="hr"></div>
+          <div class="foot-lnk">
+            <label for="tab-1">Already Member?</a>
+          </div>
+        </form>
+        </div>
+      </div>
     </div>
-
-    <script>
-        const submitEl=document.querySelector("#submit-el");
-        const signGoogleTitle = document.querySelector("#sign-google-title");
-        const signTitle=document.querySelector("#sign-title");
-        const signToggle = document.querySelector("#sign-toggle");
-        const hasAcountEl = document.querySelector("#has-acount-el")
-        const forgotPwd = document.querySelector(".forgot-password");
-        const userNameEl = document.querySelector('.username-el');
-        let isSignUp = true;
-    
-        signToggle.addEventListener("click", function() {
-    
-            if (isSignUp) {
-                signTitle.innerHTML= "Sign Up FinLingo";
-                submitEl.innerHTML = "Sign Up";
-                signGoogleTitle.innerHTML = "Sign up with Google";
-                hasAcountEl.innerHTML ="Already have an account?";
-                signToggle.innerHTML="Sign In";
-                forgotPwd.setAttribute("data-visible", "true");
-                userNameEl.setAttribute("data-visible", "true");
-                isSignUp = false;
-            } else {
-                signTitle.innerHTML= "Sign In FinLingo";
-                submitEl.innerHTML = "Sign In";
-                signGoogleTitle.innerHTML = "Sign in with Google";
-                hasAcountEl.innerHTML ="Don't have an account?"
-                signToggle.innerHTML="Sign Up";
-                forgotPwd.setAttribute("data-visible", "false");
-                userNameEl.setAttribute("data-visible", "false");
-                isSignUp = true;
-            }
-
-            console.log(isSignUp)
-        });
-    </script>
-    
+  </div>
 </body>
-</html>
 
+</html>

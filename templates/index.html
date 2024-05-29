@@ -1,99 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
-
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
+      rel="stylesheet"
+    />
 
     <title>Iwazolab Chatbot</title>
-    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./css/styles.css" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <script src="./js/index.js" defer></script>
-</head>
-<body class="">
-
+  </head>
+  <body class="">
     <header class="capitalize">
-        <div class="comletebox"></div>
-        <nav class="flex">
-            <button class="mobile-nav-toggle"aria-controls="sidebar-navigation"><span class="sr-only" aria-expanded="false">Menu</span></button>
-            <div class="logo"><span class="sr-only">logo</span></div>
-        </nav>
+      <div class="comletebox"></div>
+      <nav class="flex">
+        <button class="mobile-nav-toggle" aria-controls="sidebar-navigation">
+          <span class="sr-only" aria-expanded="false">Menu</span>
+        </button>
+        <div class="logo"><span class="sr-only">logo</span></div>
+      </nav>
     </header>
 
-
-    <main >
-        <!-- <div class="hero-intro">
+    <main>
+      <!-- <div class="hero-intro">
             <h1 class="hero-heading">FinLingo your Financial literacy partner</h1>
         </div> -->
- 
-        <div id="sidebar" class="sidebar bg-white" data-visible="true">
-            <div class="menu dropdown " data-dropdown>
-                <button class="link curent-active" data-dropdown-button >Gamification</button>
-                <div class="dropdown-menu">
-                   <div class="submenu flex">
-                        <a href="budgetingquiz.html" class="link link-drop">Budgeting</a>
-                        <a href="#" class="link link-drop">Investment</a>
-                        <a href="#" class="link link-drop">Fintechs</a>
-                        <a href="#" class="link link-drop">Insurtech</a>
-                        <a href="#" class="link link-drop">Regtech</a>
-                    </div>
-                </div>
+
+      <div id="sidebar" class="sidebar bg-white" data-visible="true">
+        <div class="menu dropdown" data-dropdown>
+          <button class="link curent-active" data-dropdown-button>
+            Gamification
+          </button>
+          <div class="dropdown-menu">
+            <div class="submenu flex">
+              <a href="budgetingquiz.html" class="link link-drop">Budgeting</a>
+              <a href="#" class="link link-drop">Investment</a>
+              <a href="#" class="link link-drop">Fintechs</a>
+              <a href="#" class="link link-drop">Insurtech</a>
+              <a href="#" class="link link-drop">Regtech</a>
             </div>
-            <div class="menu flex">
-                <a href="taxacademy.html" class="link-menus"><button class="link">Tax Academy</button></a>
-                <button class="link">Points & Badges</button>
-<!--                 <button class="link">Financial News</button>
+          </div>
+        </div>
+        <div class="menu flex">
+          <a href="taxacademy.html" class="link-menus"
+            ><button class="link">Tax Academy</button></a
+          >
+          <button class="link">Points & Badges</button>
+          <!--                 <button class="link">Financial News</button>
                 <button class="link">Challenges and Quizzes</button>
                 <button class="link">Financial Health Score</button> -->
 
-
-                <div class="profile flex">
-                    <button class="profile-btn logout-btn">
-                        <span class="">Log out</span>
-                    
-                    </button>
-                    <button class="profile-btn flex">
-                        <span class="profile-img">GA</span>
-                        <span class="profile-text">Profile Name</span>
-                    </button>
-
-                   
-                </div>
-            </div>
-
+          <div class="profile flex">
+            <button class="profile-btn logout-btn">
+              <span class="">Log out</span>
+            </button>
+            <button class="profile-btn flex">
+              <span class="profile-img">GA</span>
+              <span class="profile-text">Profile Name</span>
+            </button>
+          </div>
         </div>
-        <div class="chat-main-box" >
-            <div id="chat-container" class="chat-container" data-isblur="false">
-                <div id="chat-output"></div>
-            </div>
+      </div>
+      <div class="chat-main-box">
+        <div id="chat-container" class="chat-container" data-isblur="false">
+          <div id="chat-output"></div>
         </div>
-
+      </div>
     </main>
-        <!-- Chatbot script -->
+    <!-- Chatbot script -->
     <script type="text/javascript">
-        (function(d, t) {
-            var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
-            v.onload = function() {
-                window.voiceflow.chat.load({
-                verify: { projectID: '6620ccdab510a5beecdf2d13' },
-                url: 'https://general-runtime.voiceflow.com',
-                versionID: 'production',
-                    render: {
-                mode: 'embedded',
-                target: document.getElementById('chat-container'),
+      (function (d, t) {
+        var v = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+        v.onload = function () {
+          window.voiceflow.chat.load({
+            verify: { projectID: "6620ccdab510a5beecdf2d13" },
+            url: "https://general-runtime.voiceflow.com",
+            versionID: "production",
+            render: {
+              mode: "embedded",
+              target: document.getElementById("chat-container"),
             },
-            autostart: false
-                });
-            }
-            v.src = "https://cdn.voiceflow.com/widget/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);
-        })(document, 'script');
+            autostart: false,
+          });
+        };
+        v.src = "https://cdn.voiceflow.com/widget/bundle.mjs";
+        v.type = "text/javascript";
+        s.parentNode.insertBefore(v, s);
+      })(document, "script");
     </script>
-</body>
+  </body>
 </html>
-

@@ -1,0 +1,159 @@
+* {
+  margin: 0;
+}
+body {
+  background-color: #073b4c;
+}
+.my-nav {
+  height: 13vh;
+  width: 100vw;
+  background-color: #096381;
+  color: white;
+  display: flex;
+  align-items: center;
+}
+
+.logo-pic {
+  height: 13vh;
+  width: 9vw;
+}
+.my-logo {
+  padding-left: 2%;
+}
+
+.my-links {
+  padding-left: 54%;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
+
+li,
+a {
+  list-style-type: none;
+  text-decoration: none;
+  display: inline-block;
+  padding: 5px;
+  font-family: cursive;
+  font-size: 1.1rem;
+  color: aquamarine;
+}
+a:hover {
+  color: rgb(230, 248, 233);
+}
+.header {
+  background-image: url("./images/money3.jpg");
+  background-color: rgba(165, 192, 164, 0.3);
+  height: 87vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.header-content {
+  padding: 5% 5%;
+  color: rgb(247, 255, 249);
+}
+p,
+h2 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.hero-title {
+  font-family: cursive;
+  font-size: 4.3rem;
+  padding-bottom: 2%;
+}
+
+.hero-p {
+  padding-top: 1%;
+  font-size: 1.2rem;
+}
+
+.hero-btn {
+  font-family: cursive;
+  margin-left: 35%;
+  color: rgb(230, 248, 233);
+  border-style: none;
+  border-radius: 10px;
+  font-size: 1.6rem;
+  height: 23%;
+  width: 30%;
+  background-color: #073b4c;
+}
+
+/*background-color: #073b4c;*/
+
+.hero-btn:hover {
+  font-family: cursive;
+  margin-left: 35%;
+  color: rgb(230, 248, 233);
+  border-style: none;
+  border-radius: 9px;
+  font-size: 1.8rem;
+  height: 23%;
+  width: 30%;
+  background-color: #073b4c;
+}
+
+/*Stats*/
+.stats {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 30vw;
+  color: rgb(247, 255, 249);
+}
+
+.stat {
+  width: 30vw;
+  margin: 2rem;
+  /*padding: 20px 36px;*/
+  box-shadow: 10px 10px rgb(22, 22, 47, 0.2);
+  align-self: center;
+  border-style: none;
+  padding-left: 2%;
+}
+
+.stat-h {
+  font-size: 1.7rem;
+  font-style: normal;
+  font-weight: 100;
+}
+
+.stat-no {
+  font-size: 4rem;
+  font-style: bold;
+}
+
+.prods {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  height: 30vw;
+  color: rgb(247, 255, 249);
+}
+.prod {
+  padding: 5%;
+  padding-top: 0;
+}
+.prod-pic {
+  padding-bottom: 15px;
+}
+.prod-h {
+  padding-bottom: 15px;
+  font-size: 2rem;
+}
+.prod-p {
+  padding-bottom: 15px;
+  font-size: 1.7rem;
+}
