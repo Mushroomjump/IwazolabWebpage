@@ -5,8 +5,9 @@ from crewai_tools import SerperDevTool
 import os
 
 # Function to fetch data from MongoDB
-app = Flask(__name__)
+app = Flask(__name__, static_folder='../static', template_folder='../templates')
 app.secret_key = 'b*\xb9\xe7\xfc\xac\x14\xd1\x96\xc5\xf1\xddm\xcf\xb3r\xce\x0eo\x18\xaf6n\xbe\xa6\x9e*'
+
 
 # Setup MongoDB connection
 connection_string = "mongodb+srv://sbp1784:OBbxnqbZowezp2qX@iwazolab.sksu1fm.mongodb.net/?retryWrites=true&w=majority"
@@ -85,15 +86,14 @@ writer = Agent(
 def index():
     return render_template('index.html')
 
-
 @app.route('/api/chat', methods=['POST'])
 def chat():
     user_input = request.json.get('message')
-
+    
     # Fetch data from MongoDB
-    query = {"Content": user_input}
+    query = {"query_field": user_input}  # Replace "query_field" with the actual field you are querying against
     mongo_data = fetch_data_from_mongo(query)
-
+    
     # Create tasks for your agents
     task1 = Task(
         description=f"""Conduct a detailed analysis of the user query: "{user_input}" using data from MongoDB.
@@ -121,7 +121,6 @@ def chat():
     result = crew.kickoff()
 
     return jsonify({"message": result})
-
 
 if __name__ == '__main__':
     app.run(debug=True)
