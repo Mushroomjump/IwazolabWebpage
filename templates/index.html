@@ -91,7 +91,7 @@
                 .then(response => response.json())
                 .then(data => {
                     const botMessageElement = document.createElement("div");
-                    botMessageElement.textContent = "Bot: " + data.message;
+                    botMessageElement.textContent = "Finlingo: " + data.message;
                     chatOutput.appendChild(botMessageElement);
                 })
                 .catch(error => console.error("Error:", error));
