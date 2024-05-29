@@ -1,5 +1,11 @@
+console.log('Loading environment variables...');
+require('dotenv').config();
+console.log('Environment variables loaded:', process.env.GROQ_API_KEY);
+
+require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
+const path = require('path');
 const Groq = require('groq-sdk');
 
 const app = express();
@@ -10,6 +16,12 @@ const groq = new Groq({
 });
 
 app.use(bodyParser.json());
+app.use(express.static('static'));  // Serve static files from the "static" directory
+
+// Serve the index.html file at the root route
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'templates', 'index.html'));
+});
 
 app.post('/api/chat', async (req, res) => {
     try {
