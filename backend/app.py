@@ -121,5 +121,9 @@ def chat():
 
     return jsonify({"message": result})
 
+@app.route('/health')
+def health():
+    return "Healthy"
+
 if __name__ == '__main__':
     app.run(debug=True)
