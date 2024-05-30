@@ -89,7 +89,7 @@ def index():
 @app.route('/api/chat', methods=['POST'])
 def chat():
     user_input = request.json.get('message')
-    query = {"": user_input}
+    query = {"Content": user_input}
     # Fetch data from MongoDB  
     mongo_data = fetch_data_from_mongo(query)
     
