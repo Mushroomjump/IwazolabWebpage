@@ -1,0 +1,24 @@
+{
+  "name": "iwazolab-webpage",
+  "version": "1.0.0",
+  "description": "Iwazolab Webpage with Flask backend",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "build": "webpack --mode production",
+    "dev": "webpack serve --mode development"
+  },
+  "author": "Daniel Dhol",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "webpack": "^5.36.2",
+    "webpack-cli": "^4.6.0",
+    "webpack-dev-server": "^3.11.2",
+    "babel-loader": "^8.2.2",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-preset-env": "^1.7.0"
+  }
+}
