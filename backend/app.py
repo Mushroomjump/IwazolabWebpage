@@ -5,7 +5,7 @@ from crewai_tools import SerperDevTool
 import os
 
 # Function to fetch data from MongoDB
-app = Flask(__name__, static_folder='../static', template_folder='../templates')
+app = Flask(__name__)
 app.secret_key = 'b*\xb9\xe7\xfc\xac\x14\xd1\x96\xc5\xf1\xddm\xcf\xb3r\xce\x0eo\x18\xaf6n\xbe\xa6\x9e*'
 
 
