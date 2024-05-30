@@ -89,9 +89,8 @@ def index():
 @app.route('/api/chat', methods=['POST'])
 def chat():
     user_input = request.json.get('message')
-    
-    # Fetch data from MongoDB
-    query = {"query_field": user_input}  # Replace "query_field" with the actual field you are querying against
+    query = {"": user_input}
+    # Fetch data from MongoDB  
     mongo_data = fetch_data_from_mongo(query)
     
     # Create tasks for your agents
