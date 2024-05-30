@@ -91,12 +91,10 @@ def chat():
     user_input = request.json.get('message')
     print(f"Received user input: {user_input}")
     
-    # Fetch data from MongoDB
-    query = {"message": user_input}  # Replace "message" with the actual field you are querying against
+    query = {"message": user_input}
     mongo_data = fetch_data_from_mongo(query)
     print(f"Fetched data from MongoDB: {mongo_data}")
     
-    # Create tasks for your agents
     task1 = Task(
         description=f"""Conduct a detailed analysis of the user query: "{user_input}" using data from MongoDB.
         Identify key trends, technologies, and their impacts on rural communities in Kenya in 2024.""",
@@ -108,27 +106,25 @@ def chat():
     task2 = Task(
         description=f"""Using the insights from the research report on "{user_input}", develop engaging educational content that highlights the most significant financial literacy and fintech advancements.
         The content should be clear and accessible, catering to a rural Kenyan audience. Use simple language to ensure understanding.""",
-        expected_output="Full content piece of at least 4 paragraphs",
+        expected_output="Concise content with key points, relevant to the user's question, formatted with new lines and spaces",
         agent=writer
     )
 
-    # Instantiate your crew with a sequential process
     crew = Crew(
         agents=[researcher, writer],
         tasks=[task1, task2],
-        verbose=2  # You can set it to 1 or 2 for different logging levels
+        verbose=2
     )
 
-    # Get your crew to work!
     result = crew.kickoff()
     print(f"Crew result: {result}")
 
-    return jsonify({"message": result})
+    formatted_result = format_response(result)
+    return jsonify({"message": formatted_result})
 
-
-@app.route('/health')
-def health():
-    return "Healthy"
+def format_response(response):
+    formatted_response = response.replace("* ", "\n- ").replace("\n\n", "\n\n\n").replace("**", "\n\n")
+    return formatted_response
 
 if __name__ == '__main__':
     app.run(debug=True)
