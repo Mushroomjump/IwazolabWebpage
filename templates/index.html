@@ -70,13 +70,18 @@
         </div>
       </div>
       <div class="chat-main-box">
-        <div id="chat-container" class="chat-container" data-isblur="false">
-          <div id="chat-output"></div>
+            <div id="chat-container" class="chat-container" data-isblur="false">
+                <div id="chat-output"></div>
+            </div>
+            <form id="chat-form">
+                <input type="text" id="user-input" placeholder="Type your message here" required>
+                <button type="submit">Send</button>
+            </form>
         </div>
-      </div>
     </main>
+
     <!-- Chatbot script -->
-script type="text/javascript">
+    <script type="text/javascript">
         document.addEventListener("DOMContentLoaded", function () {
             const chatContainer = document.getElementById("chat-container");
             const chatOutput = document.getElementById("chat-output");
