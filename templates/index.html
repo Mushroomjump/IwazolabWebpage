@@ -104,9 +104,15 @@
                     },
                     body: JSON.stringify({ message })
                 })
-                .then(response => response.text())  // Note the change here
+                .then(response => response.text())
                 .then(data => {
-                    const parsedData = Function("return " + data)();  // Using Function constructor
+                    let parsedData;
+                    try {
+                        parsedData = JSON.parse(data);
+                    } catch (error) {
+                        console.error("JSON parsing error:", error);
+                        return;
+                    }
                     const botMessageElement = document.createElement("div");
                     botMessageElement.textContent = "Finlingo: " + parsedData.message;
                     chatOutput.appendChild(botMessageElement);
@@ -115,7 +121,7 @@
                 userInput.value = "";
             });
         });
-    </script> 
+    </script>           
   </body>
 </html> 
 
