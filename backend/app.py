@@ -5,7 +5,7 @@ from crewai_tools import SerperDevTool
 import os
 
 # Function to fetch data from MongoDB
-app = Flask(__name__)
+app = Flask(__name__, static_folder='../static', template_folder='../templates')
 app.secret_key = 'b*\xb9\xe7\xfc\xac\x14\xd1\x96\xc5\xf1\xddm\xcf\xb3r\xce\x0eo\x18\xaf6n\xbe\xa6\x9e*'
 
 
@@ -89,9 +89,12 @@ def index():
 @app.route('/api/chat', methods=['POST'])
 def chat():
     user_input = request.json.get('message')
-    query = {"Content": user_input}
-    # Fetch data from MongoDB  
+    print(f"Received user input: {user_input}")
+    
+    # Fetch data from MongoDB
+    query = {"Content": user_input}  
     mongo_data = fetch_data_from_mongo(query)
+    print(f"Fetched data from MongoDB: {mongo_data}")
     
     # Create tasks for your agents
     task1 = Task(
@@ -118,6 +121,7 @@ def chat():
 
     # Get your crew to work!
     result = crew.kickoff()
+    print(f"Crew result: {result}")
 
     return jsonify({"message": result})
 
