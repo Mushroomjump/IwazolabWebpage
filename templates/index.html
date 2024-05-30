@@ -1,71 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <!-- fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
+      rel="stylesheet"
+    />
+
     <title>Iwazolab Chatbot</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" />
+    <link rel="stylesheet" href="./css/styles.css" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="{{ url_for('static', filename='js/index.js') }}" defer></script>
-</head>
-<body class="">
+
+    <script src="./js/index.js" defer></script>
+  </head>
+  <body class="">
     <header class="capitalize">
-        <div class="comletebox"></div>
-        <nav class="flex">
-            <button class="mobile-nav-toggle" aria-controls="sidebar-navigation">
-                <span class="sr-only" aria-expanded="false">Menu</span>
-            </button>
-            <div class="logo"><span class="sr-only">logo</span></div>
-        </nav>
+      <div class="comletebox"></div>
+      <nav class="flex">
+        <button class="mobile-nav-toggle" aria-controls="sidebar-navigation">
+          <span class="sr-only" aria-expanded="false">Menu</span>
+        </button>
+        <div class="logo"><span class="sr-only">logo</span></div>
+      </nav>
     </header>
+
     <main>
-        <div id="sidebar" class="sidebar bg-white" data-visible="true">
-            <div class="menu dropdown" data-dropdown>
-                <button class="link curent-active" data-dropdown-button>
-                    Gamification
-                </button>
-                <div class="dropdown-menu">
-                    <div class="submenu flex">
-                        <a href="budgetingquiz.html" class="link link-drop">Budgeting</a>
-                        <a href="#" class="link link-drop">Investment</a>
-                        <a href="#" class="link link-drop">Fintechs</a>
-                        <a href="#" class="link link-drop">Insurtech</a>
-                        <a href="#" class="link link-drop">Regtech</a>
-                    </div>
-                </div>
+      <!-- <div class="hero-intro">
+            <h1 class="hero-heading">FinLingo your Financial literacy partner</h1>
+        </div> -->
+
+      <div id="sidebar" class="sidebar bg-white" data-visible="true">
+        <div class="menu dropdown" data-dropdown>
+          <button class="link curent-active" data-dropdown-button>
+            Gamification
+          </button>
+          <div class="dropdown-menu">
+            <div class="submenu flex">
+              <a href="budgetingquiz.html" class="link link-drop">Budgeting</a>
+              <a href="#" class="link link-drop">Investment</a>
+              <a href="#" class="link link-drop">Fintechs</a>
+              <a href="#" class="link link-drop">Insurtech</a>
+              <a href="#" class="link link-drop">Regtech</a>
             </div>
-            <div class="menu flex">
-                <a href="taxacademy.html" class="link-menus">
-                    <button class="link">Tax Academy</button>
-                </a>
-                <button class="link">Points & Badges</button>
-                <div class="profile flex">
-                    <button class="profile-btn logout-btn">
-                        <span class="">Log out</span>
-                    </button>
-                    <button class="profile-btn flex">
-                        <span class="profile-img">GA</span>
-                        <span class="profile-text">Profile Name</span>
-                    </button>
-                </div>
-            </div>
+          </div>
         </div>
-        <div class="chat-main-box">
-            <div id="chat-container" class="chat-container" data-isblur="false">
-                <div id="chat-output"></div>
-                <form id="chat-form">
-                    <input type="text" id="user-input" placeholder="Type a message" />
-                    <button type="submit">Send</button>
-                </form>
-            </div>
+        <div class="menu flex">
+          <a href="taxacademy.html" class="link-menus"
+            ><button class="link">Tax Academy</button></a
+          >
+          <button class="link">Points & Badges</button>
+          <!--                 <button class="link">Financial News</button>
+                <button class="link">Challenges and Quizzes</button>
+                <button class="link">Financial Health Score</button> -->
+
+          <div class="profile flex">
+            <button class="profile-btn logout-btn">
+              <span class="">Log out</span>
+            </button>
+            <button class="profile-btn flex">
+              <span class="profile-img">GA</span>
+              <span class="profile-text">Profile Name</span>
+            </button>
+          </div>
         </div>
+      </div>
+      <div class="chat-main-box">
+        <div id="chat-container" class="chat-container" data-isblur="false">
+          <div id="chat-output"></div>
+        </div>
+      </div>
     </main>
     <!-- Chatbot script -->
-    <script type="text/javascript">
+script type="text/javascript">
         document.addEventListener("DOMContentLoaded", function () {
             const chatContainer = document.getElementById("chat-container");
             const chatOutput = document.getElementById("chat-output");
@@ -98,7 +109,7 @@
                 userInput.value = "";
             });
         });
-    </script>           
-</body>
-</html>
+    </script>
+  </body>
+</html> 
 
