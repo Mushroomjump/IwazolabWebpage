@@ -92,7 +92,7 @@ def chat():
     print(f"Received user input: {user_input}")
     
     # Fetch data from MongoDB
-    query = {"Content": user_input}  
+    query = {"message": user_input}  # Replace "message" with the actual field you are querying against
     mongo_data = fetch_data_from_mongo(query)
     print(f"Fetched data from MongoDB: {mongo_data}")
     
@@ -124,6 +124,7 @@ def chat():
     print(f"Crew result: {result}")
 
     return jsonify({"message": result})
+
 
 @app.route('/health')
 def health():
