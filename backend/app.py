@@ -5,9 +5,21 @@ from crewai_tools import SerperDevTool
 import os
 
 # Function to fetch data from MongoDB
-app = Flask(__name__, static_folder='../static', template_folder='../templates')
+app = Flask(__name__, template_folder='../templates')
 app.secret_key = 'b*\xb9\xe7\xfc\xac\x14\xd1\x96\xc5\xf1\xddm\xcf\xb3r\xce\x0eo\x18\xaf6n\xbe\xa6\x9e*'
 
+# Manually serve static files from the templates folder
+@app.route('/css/<path:path>')
+def send_css(path):
+    return send_from_directory('../templates/css', path)
+
+@app.route('/images/<path:path>')
+def send_images(path):
+    return send_from_directory('../templates/images', path)
+
+@app.route('/js/<path:path>')
+def send_js(path):
+    return send_from_directory('../templates/js', path)
 
 # Setup MongoDB connection
 connection_string = "mongodb+srv://sbp1784:OBbxnqbZowezp2qX@iwazolab.sksu1fm.mongodb.net/?retryWrites=true&w=majority"
@@ -28,8 +40,8 @@ os.environ["OPENAI_API_KEY"] = 'gsk_BzEYLuvgdUVv1WeB4fowWGdyb3FYmiT5l4kQJFVYjTmq
 # Define your agents with roles and goals
 search_tool = SerperDevTool()
 
-user_input = "What is Mpesa"
-is_verbose = True
+#user_input = "What is Mpesa"
+#is_verbose = True
 
 # Agent for conducting research on financial literacy
 researcher = Agent(
@@ -123,7 +135,10 @@ def chat():
     return jsonify({"message": formatted_result})
 
 def format_response(response):
-    formatted_response = response.replace("* ", "\n- ").replace("\n\n", "\n\n\n").replace("**", "\n\n")
+    # Split the response into paragraphs by double newline
+    paragraphs = response.split("\n\n")
+    formatted_paragraphs = [para.replace("* ", "- ") for para in paragraphs]
+    formatted_response = "\n\n".join(formatted_paragraphs)
     return formatted_response
 
 if __name__ == '__main__':
