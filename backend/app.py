@@ -122,7 +122,7 @@ def chat():
         agent=writer
     )
 
-    crew = Crew(
+       crew = Crew(
         agents=[researcher, writer],
         tasks=[task1, task2],
         verbose=2
@@ -132,7 +132,12 @@ def chat():
     print(f"Crew result: {result}")
 
     formatted_result = format_response(result)
-    return jsonify({"message": formatted_result})
+
+    # Call the Node.js script with the result
+    node_result = subprocess.run(['node', 'groqChat.js', formatted_result], capture_output=True, text=True)
+    print(f"Node.js result: {node_result.stdout}")
+
+    return jsonify({"message": node_result.stdout})
 
 def format_response(response):
     # Split the response into paragraphs by double newline
@@ -140,12 +145,6 @@ def format_response(response):
     formatted_paragraphs = [para.replace("* ", "- ") for para in paragraphs]
     formatted_response = "\n\n".join(formatted_paragraphs)
     return formatted_response
-
-# Call the Node.js script with the user input
-    result = subprocess.run(['node', 'groqChat.js', user_input], capture_output=True, text=True)
-    print(f"Crew result: {result.stdout}")
-
-    return jsonify({"message": result.stdout})
 
 if __name__ == '__main__':
     app.run(debug=True)
