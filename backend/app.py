@@ -141,5 +141,11 @@ def format_response(response):
     formatted_response = "\n\n".join(formatted_paragraphs)
     return formatted_response
 
+# Call the Node.js script with the user input
+    result = subprocess.run(['node', 'groqChat.js', user_input], capture_output=True, text=True)
+    print(f"Crew result: {result.stdout}")
+
+    return jsonify({"message": result.stdout})
+
 if __name__ == '__main__':
     app.run(debug=True)
