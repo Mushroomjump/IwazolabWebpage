@@ -4,12 +4,36 @@
     {
       "src": "backend/app.py",
       "use": "@vercel/python"
+    },
+    {
+      "src": "backend/groqChat.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "templates/**/*",
+      "use": "@vercel/static"
     }
   ],
   "routes": [
     {
-      "src": "/(.*)",
+      "src": "/api/(.*)",
       "dest": "backend/app.py"
+    },
+    {
+      "src": "/css/(.*)",
+      "dest": "/templates/css/$1"
+    },
+    {
+      "src": "/images/(.*)",
+      "dest": "/templates/images/$1"
+    },
+    {
+      "src": "/js/(.*)",
+      "dest": "/templates/js/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/templates/index.html"
     }
   ]
 }
