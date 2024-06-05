@@ -20,13 +20,19 @@ document.addEventListener("DOMContentLoaded", function () {
             },
             body: JSON.stringify({ message })
         })
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
         .then(data => {
             const botMessageElement = document.createElement("div");
             botMessageElement.textContent = "Finlingo: " + data.message;
             chatOutput.appendChild(botMessageElement);
         })
-        .catch(error => console.error("Error:", error));
+        .catch(error => console.error("Fetch error:", error));
         userInput.value = "";
     });
 });
+
