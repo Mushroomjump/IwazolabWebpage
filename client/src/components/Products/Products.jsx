@@ -11,7 +11,7 @@ const ProductCard = ({ image, heading, paragraph, handleLearnMore }) => {
       <img src={image} alt={heading} className="product_pic" />
       <h2 className="product_heading">{heading}</h2>
       <p className="">{paragraph}</p>
-      <button onClick={handleLearnMore} className="">
+      <button onClick={handleLearnMore} className="product-btn">
         Learn More
       </button>
     </div>
@@ -20,7 +20,7 @@ const ProductCard = ({ image, heading, paragraph, handleLearnMore }) => {
 
 const Products = () => {
   const navigate = useNavigate();
-  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+  const isLoggedIn = useSelector((state) => state.user.isAuthenticated);
 
   const handleLearnMoreBot = () => {
     // Redirect to bot detail page

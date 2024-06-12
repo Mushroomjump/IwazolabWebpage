@@ -5,11 +5,7 @@ const About = () => {
   return (
     <div className="about-container">
       <section className="about-image">
-        <img
-          src={About_pic}
-          alt="About Us"
-          style={{ height: "100%", width: "40vw" }}
-        />
+        <img src={About_pic} alt="About Us" className="about-pic" />
       </section>
       <section className="about-text">
         <h2>About Us</h2>
