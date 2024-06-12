@@ -1,15 +1,15 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/layout/Header";
-import Hero from "./components/Hero/Hero";
-import About from "./components/About/About";
-import Contact from "./components/Contact/Contact";
 import Footer from "./components/layout/Footer";
-import Login from "./components/Login/Login";
-import SignUp from "./components/Signup/Signup";
-import Products from "./components/Products/Products";
-import Chatbot from "./components/Products/Chatbot";
-import TaxAcademy from "./components/Products/TaxAcademy";
+import HomePage from "./pages/HomePage";
+import ChatbotPage from "./pages/ChatbotPage";
+import TaxAcademyPage from "./pages/TaxAcademyPage";
+import AboutPage from "./pages/AboutPage";
+import ContactPage from "./pages/ContactPage";
+import LoginPage from "./pages/LoginPage";
+import SignUpPage from "./pages/SignUpPage";
+
 const App = () => {
   return (
     <Router>
@@ -17,19 +17,15 @@ const App = () => {
         <Header />
         <main className="flex-grow">
           <Routes>
-            <Route path="/" element={<Hero />} />
-            <Route path="/products" element={<Products />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<SignUp />} />
-            <Route path="/chatbot" element={<Chatbot />} />
-            <Route path="/taxacademy" element={<TaxAcademy />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
+            <Route path="/" element={<HomePage />} />
+            <Route path="/chatbot" element={<ChatbotPage />} />
+            <Route path="/taxacademy" element={<TaxAcademyPage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/signup" element={<SignUpPage />} />
           </Routes>
         </main>
-        <About />
-        <Products />
-        <Contact />
         <Footer />
       </div>
     </Router>

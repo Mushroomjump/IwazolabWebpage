@@ -28,7 +28,9 @@ a:hover{
     color: #540101;
     font-size: 1.6rem;
 }
-
+.nav-links{
+    
+}
 /* Hero */
 .hero {
     background-color: rgba(164, 182, 192, 0.3);

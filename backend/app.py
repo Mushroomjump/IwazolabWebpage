@@ -3,6 +3,7 @@ from pymongo import MongoClient
 from crewai import Agent, Task, Crew, Process
 from crewai_tools import SerperDevTool
 import os
+import subprocess
 
 # Function to fetch data from MongoDB
 app = Flask(__name__, template_folder='../templates')
@@ -121,11 +122,11 @@ def chat():
         expected_output="Concise content with key points, relevant to the user's question, formatted with new lines and spaces",
         agent=writer
     )
-
-       crew = Crew(
-        agents=[researcher, writer],
-        tasks=[task1, task2],
-        verbose=2
+    
+    crew = Crew(
+    agents=[researcher, writer],
+    tasks=[task1, task2],
+    verbose=2
     )
 
     result = crew.kickoff()
@@ -148,3 +149,5 @@ def format_response(response):
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+

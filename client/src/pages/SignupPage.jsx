@@ -11,7 +11,8 @@ const SignupPage = () => {
     if (isAuthenticated === true) {
       navigate("/");
     }
-  }, []);
+  }, [isAuthenticated, navigate]); // Include 'isAuthenticated' and 'navigate' in the dependency array
+
   return (
     <div>
       <Signup />

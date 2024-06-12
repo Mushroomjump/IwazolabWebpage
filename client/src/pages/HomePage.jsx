@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "../components/layout/Header";
-import Hero from "../components/Route/Hero/Hero";
+import Hero from "../components/Hero/Hero";
 import Products from "../components/Products/Products";
 import About from "../components/About/About";
 import Contact from "../components/Contact/Contact";
@@ -11,9 +11,9 @@ const HomePage = () => {
     <div>
       <Header activeHeading={1} />
       <Hero />
-      <About/>
-      <Products/>
-      <Contact/>
+      <About />
+      <Products />
+      <Contact />
       <Footer />
     </div>
   );
