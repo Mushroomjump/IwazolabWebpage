@@ -4,7 +4,7 @@
 const Groq = require("groq-sdk");
 
 const groq = new Groq({
-    apiKey: process.env.GROQ_API_KEY
+  apiKey: process.env.Faith_temp_groq_key,
 });
 
 async function main(message) {
@@ -23,6 +23,7 @@ async function getGroqChatCompletion(message) {
         model: "llama3-70b-8192"
     });
 }
+
 
 module.exports = {
     main

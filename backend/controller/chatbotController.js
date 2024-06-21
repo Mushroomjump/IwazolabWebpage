@@ -1,4 +1,4 @@
-const { main } = require("./groqChat");
+const { main } = require("../groqChat");
 
 async function handleChatRequest(req, res) {
   const message = req.body.message;

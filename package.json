@@ -11,14 +11,15 @@
   "author": "Daniel Dhol",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "groq-sdk": "^0.5.0"
   },
   "devDependencies": {
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-loader": "^8.2.2",
+    "babel-preset-env": "^1.7.0",
     "webpack": "^5.36.2",
     "webpack-cli": "^4.6.0",
-    "webpack-dev-server": "^3.11.2",
-    "babel-loader": "^8.2.2",
-    "babel-core": "^7.0.0-bridge.0",
-    "babel-preset-env": "^1.7.0"
+    "webpack-dev-server": "^3.11.2"
   }
 }

@@ -1,7 +1,6 @@
 const express = require("express");
 const User = require("../model/user");
 const router = express.Router();
-const cloudinary = require("cloudinary");
 const ErrorHandler = require("../utils/ErrorHandler");
 const catchAsyncErrors = require("../middlewear/catchAsyncErrors");
 const jwt = require("jsonwebtoken");
@@ -12,25 +11,17 @@ const { isAuthenticated, isAdmin } = require("../middlewear/auth");
 // create user
 router.post("/create-user", async (req, res, next) => {
   try {
-    const { name, email, password, avatar } = req.body;
+    const { name, email, password } = req.body;
     const userEmail = await User.findOne({ email });
 
     if (userEmail) {
       return next(new ErrorHandler("User already exists", 400));
     }
 
-    const myCloud = await cloudinary.v2.uploader.upload(avatar, {
-      folder: "avatars",
-    });
-
     const user = {
       name: name,
       email: email,
       password: password,
-      avatar: {
-        public_id: myCloud.public_id,
-        url: myCloud.secure_url,
-      },
     };
 
     const activationToken = createActivationToken(user);
@@ -62,7 +53,7 @@ const createActivationToken = (user) => {
   });
 };
 
-/* activate user
+//activate user
 router.post(
   "/activation",
   catchAsyncErrors(async (req, res, next) => {
@@ -77,7 +68,7 @@ router.post(
       if (!newUser) {
         return next(new ErrorHandler("Invalid token", 400));
       }
-      const { name, email, password, avatar } = newUser;
+      const { name, email, password } = newUser;
 
       let user = await User.findOne({ email });
 
@@ -87,7 +78,6 @@ router.post(
       user = await User.create({
         name,
         email,
-        avatar,
         password,
       });
 
@@ -96,7 +86,7 @@ router.post(
       return next(new ErrorHandler(error.message, 500));
     }
   })
-);*/
+);
 
 // login user
 router.post(
@@ -297,10 +287,6 @@ router.delete(
           new ErrorHandler("User is not available with this id", 400)
         );
       }
-
-      const imageId = user.avatar.public_id;
-
-      await cloudinary.v2.uploader.destroy(imageId);
 
       await User.findByIdAndDelete(req.params.id);
 

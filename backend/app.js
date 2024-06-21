@@ -27,10 +27,13 @@ if (process.env.NODE_ENV !== "PRODUCTION") {
   });
 }
 
+// Import handleChatRequest
+const { handleChatRequest } = require("./controller/chatbotController");
+
 // import routes
 const user = require("./controller/user");
 
-app.post("/api/chat", handleChatRequest);
+app.post("/api/chatbotController", handleChatRequest);
 
 app.use("/api/v2/user", user);
 

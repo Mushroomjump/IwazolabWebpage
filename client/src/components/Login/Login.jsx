@@ -1,38 +1,37 @@
-import { React, useState } from "react";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import "../../styles/styles.css";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
-import { server } from "../../server";
 import { toast } from "react-toastify";
+import { loginUser } from "../../redux/actions/user";
 
 const Login = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [visible, setVisible] = useState(false);
 
+  // Redux state
+  const { loading, error, user } = useSelector((state) => state.user);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    await axios
-      .post(
-        `${server}/user/login-user`,
-        {
-          email,
-          password,
-        },
-        { withCredentials: true }
-      )
-      .then((res) => {
-        toast.success("Login Success!");
-        navigate("/");
-        window.location.reload(true);
-      })
-      .catch((err) => {
-        toast.error(err.response.data.message);
-      });
+    dispatch(loginUser(email, password));
   };
+
+  // Handle side effects for login success and error
+  React.useEffect(() => {
+    if (user) {
+      toast.success("Login Success!");
+      navigate("/");
+      window.location.reload();
+    }
+    if (error) {
+      toast.error(error);
+    }
+  }, [user, error, navigate]);
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
@@ -95,8 +94,8 @@ const Login = () => {
                 )}
               </div>
             </div>
-            <div className={`justify-between`}>
-              <div className={``}>
+            <div className="justify-between">
+              <div>
                 <input
                   type="checkbox"
                   name="remember-me"
@@ -123,11 +122,12 @@ const Login = () => {
               <button
                 type="submit"
                 className="group relative w-full h-[40px] flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700"
+                disabled={loading} // Disable button while loading
               >
-                Submit
+                {loading ? "Loading..." : "Submit"}
               </button>
             </div>
-            <div className={` w-full`}>
+            <div className="w-full">
               <h4>Not have any account?</h4>
               <Link to="/sign-up" className="text-blue-600 pl-2">
                 Sign Up
