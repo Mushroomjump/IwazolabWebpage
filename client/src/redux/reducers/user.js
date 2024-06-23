@@ -1,4 +1,15 @@
 import { createReducer } from "@reduxjs/toolkit";
+import {
+  LOGIN_REQUEST,
+  LOGIN_SUCCESS,
+  LOGIN_FAIL,
+  LOGOUT_REQUEST,
+  LOGOUT_SUCCESS,
+  LOGOUT_FAIL,
+  LOAD_USER_REQUEST,
+  LOAD_USER_SUCCESS,
+  LOAD_USER_FAIL,
+} from "../actions/user";
 
 const initialState = {
   isAuthenticated: false,
@@ -7,77 +18,52 @@ const initialState = {
   error: null,
 };
 
-export const userReducer = createReducer(initialState, {
-  LoginRequest: (state) => {
+const userReducer = createReducer(initialState, {
+  [LOGIN_REQUEST]: (state) => {
     state.loading = true;
-    state.error = null; // Clear any previous errors on new login attempt
+    state.error = null;
   },
-  LoginSuccess: (state, action) => {
+  [LOGIN_SUCCESS]: (state, action) => {
     state.isAuthenticated = true;
     state.loading = false;
     state.user = action.payload;
     state.error = null;
   },
-  LoginFail: (state, action) => {
+  [LOGIN_FAIL]: (state, action) => {
     state.loading = false;
     state.error = action.payload;
     state.isAuthenticated = false;
     state.user = null;
   },
-  LogoutRequest: (state) => {
+  [LOGOUT_REQUEST]: (state) => {
     state.loading = true;
+    state.error = null;
   },
-  LogoutSuccess: (state) => {
+  [LOGOUT_SUCCESS]: (state) => {
     state.loading = false;
     state.isAuthenticated = false;
     state.user = null;
     state.error = null;
   },
-  LogoutFail: (state, action) => {
+  [LOGOUT_FAIL]: (state, action) => {
     state.loading = false;
     state.error = action.payload;
   },
-  LoadUserRequest: (state) => {
+  [LOAD_USER_REQUEST]: (state) => {
     state.loading = true;
     state.error = null;
   },
-  LoadUserSuccess: (state, action) => {
+  [LOAD_USER_SUCCESS]: (state, action) => {
     state.isAuthenticated = true;
     state.loading = false;
     state.user = action.payload;
     state.error = null;
   },
-  LoadUserFail: (state, action) => {
+  [LOAD_USER_FAIL]: (state, action) => {
     state.loading = false;
     state.error = action.payload;
     state.isAuthenticated = false;
     state.user = null;
-  },
-  updateUserInfoRequest: (state) => {
-    state.loading = true;
-    state.error = null;
-  },
-  updateUserInfoSuccess: (state, action) => {
-    state.loading = false;
-    state.user = action.payload;
-    state.error = null;
-  },
-  updateUserInfoFailed: (state, action) => {
-    state.loading = false;
-    state.error = action.payload;
-  },
-  getAllUsersRequest: (state) => {
-    state.loading = true;
-    state.error = null;
-  },
-  getAllUsersSuccess: (state, action) => {
-    state.loading = false;
-    state.error = null;
-    state.users = action.payload;
-  },
-  getAllUsersFailed: (state, action) => {
-    state.loading = false;
-    state.error = action.payload;
   },
 });
 

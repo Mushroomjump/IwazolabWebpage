@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { loadUser } from "../../redux/actions/user";
 import test_img from "./test.png";
 import learn_img from "./learn.png";
 import question_img from "./question.png";
@@ -20,16 +21,23 @@ const ProductCard = ({ image, heading, paragraph, handleLearnMore }) => {
 
 const Products = () => {
   const navigate = useNavigate();
-  const isLoggedIn = useSelector((state) => state.user.isAuthenticated);
+  const dispatch = useDispatch();
+  const { isAuthenticated } = useSelector((state) => state.user);
+
+  useEffect(() => {
+    dispatch(loadUser());
+  }, [dispatch]);
 
   const handleLearnMoreBot = () => {
-    // Redirect to bot detail page
-    navigate("/Chatbot");
+    if (isAuthenticated) {
+      navigate("/Chatbot");
+    } else {
+      navigate("/login");
+    }
   };
 
   const handleLearnMoreTax = () => {
-    if (isLoggedIn) {
-      // Redirect to tax detail page
+    if (isAuthenticated) {
       navigate("/taxAcademy");
     } else {
       navigate("/login");
@@ -37,8 +45,7 @@ const Products = () => {
   };
 
   const handleLearnMoreTest = () => {
-    if (isLoggedIn) {
-      // Redirect to test detail page
+    if (isAuthenticated) {
       navigate("/test-details");
     } else {
       navigate("/login");

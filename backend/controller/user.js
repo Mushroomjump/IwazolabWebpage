@@ -89,36 +89,38 @@ router.post(
 );
 
 // login user
-router.post(
-  "/login-user",
-  catchAsyncErrors(async (req, res, next) => {
-    try {
-      const { email, password } = req.body;
+router.post("/login-user", async (req, res, next) => {
+  try {
+    console.log("Login Attempt Body:", req.body); // Debug log
 
-      if (!email || !password) {
-        return next(new ErrorHandler("Please provide the all fields!", 400));
-      }
+    const { email, password } = req.body;
 
-      const user = await User.findOne({ email }).select("+password");
-
-      if (!user) {
-        return next(new ErrorHandler("User doesn't exists!", 400));
-      }
-
-      const isPasswordValid = await user.comparePassword(password);
-
-      if (!isPasswordValid) {
-        return next(
-          new ErrorHandler("Please provide the correct information", 400)
-        );
-      }
-
-      sendToken(user, 201, res);
-    } catch (error) {
-      return next(new ErrorHandler(error.message, 500));
+    if (!email || !password) {
+      console.log("Missing fields"); // Debug log
+      return next(new ErrorHandler("Please provide all fields!", 400));
     }
-  })
-);
+
+    const user = await User.findOne({ email }).select("+password");
+    if (!user) {
+      console.log("User not found"); // Debug log
+      return next(new ErrorHandler("User doesn't exist!", 400));
+    }
+
+    const isPasswordValid = await user.comparePassword(password);
+    console.log("Password valid:", isPasswordValid); // Debug log
+
+    if (!isPasswordValid) {
+      console.log("Invalid password"); // Debug log
+      return next(new ErrorHandler("Incorrect credentials!", 400));
+    }
+
+    sendToken(user, 201, res);
+  } catch (error) {
+    console.log("Login error:", error); // Debug log
+    return next(new ErrorHandler(error.message, 500));
+  }
+});
+
 
 // load user
 router.get(

@@ -1,4 +1,3 @@
-// src/components/layout/Header.jsx
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
@@ -27,9 +26,9 @@ const Header = () => {
           />
         </Link>
       </div>
-      <div className="nav-links hidden md:flex">
+      <div className="hidden md:flex items-center">
         {" "}
-        {/* Hide on small screens */}
+        {/* Ensure this div is hidden on small screens */}
         <nav className="flex items-center">
           <Link to="/about" className="mr-4">
             About Us
@@ -40,7 +39,7 @@ const Header = () => {
           <Link to="/contact" className="mr-4">
             Contact Us
           </Link>
-          {isAuthenticated ? (
+          {isAuthenticated && (
             <>
               <span className="mr-4">Welcome, {user?.name || "User"}</span>
               <button
@@ -50,24 +49,12 @@ const Header = () => {
                 Logout
               </button>
             </>
-          ) : (
-            <>
-              <Link to="/login" className="mr-4">
-                Login
-              </Link>
-              <Link
-                to="/signup"
-                className="text-white bg-blue-800 px-4 py-2 rounded"
-              >
-                Sign Up
-              </Link>
-            </>
           )}
         </nav>
       </div>
       <div className="md:hidden flex items-center">
         {" "}
-        {/* Show only on small screens */}
+        {/* Ensure this div is visible on small screens */}
         <button onClick={toggleDropdown} className="text-white">
           {dropdownVisible ? (
             <AiOutlineClose size={25} />

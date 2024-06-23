@@ -1,37 +1,45 @@
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { React, useState } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
-import "../../styles/styles.css";
+import styles from "../../styles/styles.css";
 import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import { server } from "../../server";
 import { toast } from "react-toastify";
-import { loginUser } from "../../redux/actions/user";
 
 const Login = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [visible, setVisible] = useState(false);
 
-  // Redux state
-  const { loading, error, user } = useSelector((state) => state.user);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch(loginUser(email, password));
-  };
 
-  // Handle side effects for login success and error
-  React.useEffect(() => {
-    if (user) {
-      toast.success("Login Success!");
-      navigate("/");
-      window.location.reload();
+    console.log("Submitting with Email:", email, "Password:", password);
+
+    try {
+      const res = await axios.post(
+        `${server}/user/login-user`,
+        { email, password },
+        { withCredentials: true }
+      );
+
+      console.log("Response:", res);
+
+      if (res.status === 201) {
+        toast.success("Login Success!");
+        navigate("/");
+        window.location.reload(true);
+      } else {
+        toast.error("Unexpected response status: " + res.status);
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      const errorMessage =
+        error.response?.data?.message || error.message || "Login failed";
+      toast.error(errorMessage);
     }
-    if (error) {
-      toast.error(error);
-    }
-  }, [user, error, navigate]);
+  };
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
@@ -94,8 +102,8 @@ const Login = () => {
                 )}
               </div>
             </div>
-            <div className="justify-between">
-              <div>
+            <div className={`${styles.noramlFlex} justify-between`}>
+              <div className={`${styles.noramlFlex}`}>
                 <input
                   type="checkbox"
                   name="remember-me"
@@ -122,12 +130,11 @@ const Login = () => {
               <button
                 type="submit"
                 className="group relative w-full h-[40px] flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700"
-                disabled={loading} // Disable button while loading
               >
-                {loading ? "Loading..." : "Submit"}
+                Submit
               </button>
             </div>
-            <div className="w-full">
+            <div className={`${styles.noramlFlex} w-full`}>
               <h4>Not have any account?</h4>
               <Link to="/sign-up" className="text-blue-600 pl-2">
                 Sign Up
