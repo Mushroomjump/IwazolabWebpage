@@ -127,43 +127,9 @@ const Singup = () => {
             </div>
 
             <div>
-              <label
-                htmlFor="avatar"
-                className="block text-sm font-medium text-gray-700"
-              ></label>
-              <div className="mt-2 flex items-center">
-                <span className="inline-block h-8 w-8 rounded-full overflow-hidden">
-                  {avatar ? (
-                    <img
-                      src={avatar}
-                      alt="avatar"
-                      className="h-full w-full object-cover rounded-full"
-                    />
-                  ) : (
-                    <RxAvatar className="h-8 w-8" />
-                  )}
-                </span>
-                <label
-                  htmlFor="file-input"
-                  className="ml-5 flex items-center justify-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50"
-                >
-                  <span>Upload a file</span>
-                  <input
-                    type="file"
-                    name="avatar"
-                    id="file-input"
-                    accept=".jpg,.jpeg,.png"
-                    onChange={handleFileInputChange}
-                    className="sr-only"
-                  />
-                </label>
-              </div>
-            </div>
-
-            <div>
               <button
                 type="submit"
-                className="group relative w-full h-[40px] flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700"
+                className="group relative w-full h-[40px] py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700"
               >
                 Submit
               </button>

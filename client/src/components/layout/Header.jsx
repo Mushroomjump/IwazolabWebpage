@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import logo from "./logo.png";
 import "../../styles/styles.css";
 import { logout } from "../../redux/actions/user";
-import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai"; // Icons for menu toggle
+import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 
 const Header = () => {
   const [dropdownVisible, setDropdownVisible] = useState(false);
@@ -16,7 +16,7 @@ const Header = () => {
   };
 
   return (
-    <header className="bg-blue-600 text-white p-4 flex justify-between items-center header-container">
+    <header className=" text-white p-4 flex justify-between items-center header-container ">
       <div className="flex items-center logo-div">
         <Link to="/" className="text-2xl font-bold mr-4 logo">
           <img
@@ -27,7 +27,6 @@ const Header = () => {
         </Link>
       </div>
       <div className="hidden md:flex items-center">
-        {" "}
         {/* Ensure this div is hidden on small screens */}
         <nav className="flex items-center">
           <Link to="/about" className="mr-4">
@@ -39,7 +38,7 @@ const Header = () => {
           <Link to="/contact" className="mr-4">
             Contact Us
           </Link>
-          {isAuthenticated && (
+          {isAuthenticated ? (
             <>
               <span className="mr-4">Welcome, {user?.name || "User"}</span>
               <button
@@ -49,11 +48,19 @@ const Header = () => {
                 Logout
               </button>
             </>
+          ) : (
+            <>
+              <Link to="/login" className="mr-4">
+                Login
+              </Link>
+              <Link to="/signup" className="text-white  px-4 py-2 rounded">
+                Sign Up
+              </Link>
+            </>
           )}
         </nav>
       </div>
       <div className="md:hidden flex items-center">
-        {" "}
         {/* Ensure this div is visible on small screens */}
         <button onClick={toggleDropdown} className="text-white">
           {dropdownVisible ? (
