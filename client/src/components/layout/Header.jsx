@@ -42,8 +42,12 @@ const Header = () => {
             <>
               <span className="mr-4">Welcome, {user?.name || "User"}</span>
               <button
-                onClick={() => dispatch(logout())}
-                className="text-white bg-blue-800 px-4 py-2 rounded"
+                onClick={() => {
+                  console.log("Logout button clicked");
+                  dispatch(logout());
+                  toggleDropdown();
+                }}
+                className="text-white bg-blue-800  py-2 rounded mt-2"
               >
                 Logout
               </button>
@@ -87,6 +91,7 @@ const Header = () => {
                 <span className="my-2">Welcome, {user?.name || "User"}</span>
                 <button
                   onClick={() => {
+                    console.log("Logout button clicked");
                     dispatch(logout());
                     toggleDropdown();
                   }}

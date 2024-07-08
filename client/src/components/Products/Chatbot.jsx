@@ -7,6 +7,7 @@ const Chatbot = () => {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
+  const [showHistory, setShowHistory] = useState(false);
   const messageEndRef = useRef(null);
 
   const sendMessage = async () => {
@@ -46,73 +47,77 @@ const Chatbot = () => {
   useEffect(scrollToBottom, [messages]);
 
   return (
-    <div className="flex h-screen bg-gray-100">
-      <div className="w-one bg-white shadow-md overflow-y-auto">
-        <div className="p-4">
-          <h2 className="text-xl font-bold">Chat History</h2>
-          <ul>
-            {messages.map((msg, index) => (
-              <li
-                key={index}
-                className={`py-2 px-4 ${
-                  msg.sender === "user" ? "text-right" : "text-left"
-                }`}
-              >
-                <span
-                  className={`${
-                    msg.sender === "user"
-                      ? "bg-blue-500 text-white"
-                      : "bg-gray-200 text-black"
-                  } inline-block p-2 rounded`}
-                >
-                  {msg.text}
-                </span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-      <div className="w-three flex flex-col">
-        <div className="flex-grow p-4 overflow-y-auto">
-          {messages.map((msg, index) => (
-            <div
-              key={index}
-              className={`my-2 ${
-                msg.sender === "user" ? "text-right" : "text-left"
+    <div className="flex h-screen bg-gray-100 flex-col">
+      <div className="flex-grow p-4 overflow-y-auto">
+        {messages.map((msg, index) => (
+          <div
+            key={index}
+            className={`my-2 ${
+              msg.sender === "user" ? "text-right" : "text-left"
+            }`}
+          >
+            <span
+              className={`inline-block p-2 rounded ${
+                msg.sender === "user"
+                  ? "bg-blue-500 text-white"
+                  : "bg-gray-200 text-black"
               }`}
             >
-              <span
-                className={`inline-block p-2 rounded ${
-                  msg.sender === "user"
-                    ? "bg-blue-500 text-white"
-                    : "bg-gray-200 text-black"
-                }`}
-              >
-                {msg.text}
-              </span>
-            </div>
-          ))}
-          <div ref={messageEndRef} />
-        </div>
-        <div className="p-4 bg-white border-t">
-          <div className="flex">
-            <input
-              type="text"
-              className="flex-grow p-2 border rounded-l-md"
-              placeholder="Type your message..."
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              onKeyDown={handleKeyPress}
-            />
-            <button
-              className="p-2 bg-blue-500 text-white rounded-r-md flex items-center justify-center"
-              onClick={sendMessage}
-              disabled={loading}
-            >
-              <AiOutlineSend size={24} />
-            </button>
+              {msg.text}
+            </span>
           </div>
+        ))}
+        <div ref={messageEndRef} />
+      </div>
+      <div className="p-4 bg-white border-t">
+        <div className="flex">
+          <input
+            type="text"
+            className="flex-grow p-2 border rounded-l-md"
+            placeholder="Type your message..."
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            onKeyDown={handleKeyPress}
+          />
+          <button
+            className="p-2 bg-blue-500 text-white rounded-r-md flex items-center justify-center"
+            onClick={sendMessage}
+            disabled={loading}
+          >
+            <AiOutlineSend size={24} />
+          </button>
         </div>
+        <button
+          className="mt-2 p-2 bg-gray-300 text-black rounded-md"
+          onClick={() => setShowHistory(!showHistory)}
+        >
+          {showHistory ? "Hide Chat History" : "Show Chat History"}
+        </button>
+        {showHistory && (
+          <div className="mt-2 p-2 bg-gray-100 max-h-48 overflow-y-auto">
+            <h2 className="text-xl font-bold">Chat History</h2>
+            <ul>
+              {messages.map((msg, index) => (
+                <li
+                  key={index}
+                  className={`py-2 px-4 ${
+                    msg.sender === "user" ? "text-right" : "text-left"
+                  }`}
+                >
+                  <span
+                    className={`${
+                      msg.sender === "user"
+                        ? "bg-blue-500 text-white"
+                        : "bg-gray-200 text-black"
+                    } inline-block p-2 rounded`}
+                  >
+                    {msg.text}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
     </div>
   );

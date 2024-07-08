@@ -57,7 +57,7 @@ export const logout = () => async (dispatch) => {
   try {
     dispatch({ type: LOGOUT_REQUEST });
 
-    await axios.post(`${server}/user/logout`, {}, { withCredentials: true });
+    await axios.get(`${server}/user/logout`, { withCredentials: true });
 
     dispatch({ type: LOGOUT_SUCCESS });
   } catch (error) {

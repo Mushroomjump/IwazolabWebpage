@@ -121,7 +121,6 @@ router.post("/login-user", async (req, res, next) => {
   }
 });
 
-
 // load user
 router.get(
   "/getuser",
@@ -144,18 +143,20 @@ router.get(
   })
 );
 
-// log out user
 router.get(
   "/logout",
   catchAsyncErrors(async (req, res, next) => {
     try {
-      res.cookie("token", null, {
-        expires: new Date(Date.now()),
+      // Clear the cookie
+      res.cookie("token", "", {
+        expires: new Date(0),
         httpOnly: true,
         sameSite: "none",
         secure: true,
       });
-      res.status(201).json({
+
+      // Send response
+      res.status(200).json({
         success: true,
         message: "Log out successful!",
       });
